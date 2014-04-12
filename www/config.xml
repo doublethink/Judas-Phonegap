@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
+        id        = "com.phonegap.judas"
         version   = "1.0.0">
 
-    <name>Hello World</name>
+    <name>Judas</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Report sightings of biological pests during your stay at Abel Tasmen national park.
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+        The Judas Project team
     </author>
 
     <!--
