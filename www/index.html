@@ -5,10 +5,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" /> 
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
             app.initialize();
@@ -18,41 +18,47 @@
 
 </head>
 <body>
-<!-- Start of first page -->
-<div data-role="page" id="deviceready">
 
-    <div data-role="header">
-        <h1>Judas Project</h1>
-    </div><!-- /header -->
+    <div data-role="page" id="loadingpage">
+        <a href="#mainpage">Loading...</a>
+    </div>
 
-    <div role="main" class="ui-content" id="loadingpage">Loading...</div>
 
-    <div role="main" class="ui-content" id="mainpage">
+    <!-- Start of first page -->
+    <div data-role="page" id="mainpage">
 
-        <label for="text-1">Get a quote:</label>
-        <input name="text-1" id="text1" value="1" type="text">
-        <input type="submit" value="Submit Button" id="button1" />
+        <div data-role="header">
+            <h1>Judas Project</h1>
+        </div><!-- /header -->
 
-	<!-- put the result here -->
-	<div id="result"  class="functions"></div>
+        <div role="main" class="ui-content">
 
-        <label for="text-2">Add a new quote:</label>
-        <p>Author:</p><form name="checkListForm">
-          <input type="text" name="checkListItem"/>
-        </form>
+            <label for="text-1">Get a quote:</label>
+            <input name="text-1" id="text1" value="1" type="text">
+            <input type="submit" value="Submit Button" id="button1" />
 
-        <p>Quote:</p><form name="checkListForm2">
-          <input type="text" name="checkListItem2"/>
-        </form>
-        
-        <input type="submit" value="Submit Button" id="button2" />
+    	<!-- put the result here -->
+    	<div id="result"  class="functions"></div>
 
-    </div><!-- /content -->
+            <label for="text-2">Add a new quote:</label>
+            <p>Author:</p><form name="checkListForm">
+              <input type="text" name="checkListItem"/>
+            </form>
 
-    <div data-role="footer">
-        <h4>Page Footer</h4>
-    </div><!-- /footer -->
-</div><!-- /page -->
+            <p>Quote:</p><form name="checkListForm2">
+              <input type="text" name="checkListItem2"/>
+            </form>
+            
+            <input type="submit" value="Submit Button" id="button2" />
+
+        </div><!-- /content -->
+
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+
+
 
 
 

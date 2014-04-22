@@ -1,4 +1,9 @@
 #mainpage 
 {
-	display: none;
+	/*display: none;*/
+}
+
+#loadingpage
+{
+	/*display: block;*/
 }

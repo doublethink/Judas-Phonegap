@@ -1,7 +1,5 @@
 $(document).bind('pageinit', function() {
-
-  alert("hello");
-
+  
   $.ajaxSetup ({
     cache: false
   });
