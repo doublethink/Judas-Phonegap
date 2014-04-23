@@ -37,6 +37,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        $("#loadingpage").append("<div>Done</div>");
         window.location.replace("#mainpage");
 
         console.log('Received Event: ' + id);
