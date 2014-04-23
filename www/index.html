@@ -10,22 +10,21 @@
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
-<script type="text/javascript">
-    document.addEventListener("deviceready", function(){
-        alert("Device Ready");
-    },true);
-</script>
-
 <script type="text/javascript" src="js/bindings.js"></script>
 
 </head>
 <body>
 
     <!-- Start of first page -->
-    <div data-role="page" id="mainpage">
+    <div data-role="page" class="ui-header ui-bar-a" role="banner" id="mainpage">
+
+        <div data-role="panel" id="menu-panel" animate="true" display="reveal">
+            <h1>Test</h1>
+        </div>
 
         <div data-role="header">
-            <h1>Judas Project</h1>
+            <a href="#menu-panel" data-icon="bars">Menu</a>
+            <h1>The Judas Project</h1>
         </div><!-- /header -->
 
         <div role="main" class="ui-content">
