@@ -1,9 +1,4 @@
-#mainpage 
-{
-	/*display: none;*/
-}
-
-#loadingpage
-{
-	/*display: block;*/
+#login-with-facebook {
+	background-color: blue;
+	color: white;
 }

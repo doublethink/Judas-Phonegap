@@ -4,6 +4,24 @@ $(document).bind('pageinit', function() {
     cache: false
   });
 
+  $(".FB-login").bind("click", function(event, ui){
+ 
+    FB.login(function(response) {
+        if (response.status === 'connected') {
+            $.mobile.changePage($("#mainpage"));
+        } else {
+            alert('Unable to login');
+        }
+    },{ scope: "email" });
+  });
+
+  $(".FB-logout").bind("click", function(event, ui){
+ 
+    FB.logout(function(response){
+      $.mobile.changePage($("#login"));
+    });
+  });
+
   $( "#button1" ).bind( "click", function(event, ui) {
     var q = $("#text1").val();
     alert("Click "+q);

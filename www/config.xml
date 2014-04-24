@@ -61,7 +61,7 @@
 
     <!-- Third party plugins -->
 
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0">
         <param name="APP_ID" value="628299267250367" />
         <param name="APP_NAME" value="Judas Project" />
     </gap:plugin>

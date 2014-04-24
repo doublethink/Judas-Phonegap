@@ -12,38 +12,42 @@
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript" src="js/facebook-js-sdk.js"></script>
 <script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
-<script type="text/javascript" src="js/facebook.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
 <script type="text/javascript" src="js/bindings.js"></script>
 
 </head>
 <body>
 
-
+    <!-- Universal header -->
+    <div data-role="header" data-position="fixed">
+            <a href="#menu-panel" data-icon="bars">Menu</a>
+            <h1>The Judas Project</h1>
+    </div>
 
     <!-- Start of login page, will not appear if already logged in -->
     <div data-role="page" id="login">
 
-        <div role="main" class="ui-content">
-            <a href="#mainpage">
-                Login
-            </a>
-
-            <div id="login-with-facebook">Login</div>
+        <!-- Slider panel -->
+        <div data-role="panel" id="menu-panel" animate="true" display="reveal">
+            <h3>Selector Menu</h3>
+            <input type="button" class="FB-logout" id="logout-of-facebook" data-shadow="false" value="Logout of Facebook"/>
         </div>
+
+        <button class="FB-login" id="login-with-facebook">Login with Facebook</button>
+
+        <a href="#mainpage" data-role="button" data-mini="true">Shortcut to mainpage (dev)</a>
 
     </div>
 
-
+    <!-- MAIN PAGE -->
     <div data-role="page" id="mainpage">
 
-        <div data-role="panel" id="menu-panel" animate="true" display="reveal">
-            <h1>Test</h1>
-        </div>
 
-        <div data-role="header">
-            <a href="#menu-panel" data-icon="bars">Menu</a>
-            <h1>The Judas Project</h1>
-        </div><!-- /header -->
+        <!-- Slider panel -->
+        <div data-role="panel" id="menu-panel" animate="true" display="reveal">
+            <h3>Selector Menu</h3>
+            <input type="button" class="FB-logout" id="logout-of-facebook" data-shadow="false" value="Logout of Facebook"/>
+        </div>
 
         <div role="main" class="ui-content">
 
