@@ -10,13 +10,31 @@
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.2.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/facebook-js-sdk.js"></script>
+<script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
+<script type="text/javascript" src="js/facebook.js"></script>
 <script type="text/javascript" src="js/bindings.js"></script>
 
 </head>
 <body>
 
+
+
     <!-- Start of first page -->
-    <div data-role="page" class="ui-header ui-bar-a" role="banner" id="mainpage">
+    <div data-role="page" id="login">
+
+        <div role="main" class="ui-content">
+            <a href="#mainpage">
+                Login
+            </a>
+
+            <div id="login-with-facebook">Login</div>
+        </div>
+
+    </div>
+
+
+    <div data-role="page" id="mainpage">
 
         <div data-role="panel" id="menu-panel" animate="true" display="reveal">
             <h1>Test</h1>
@@ -53,6 +71,23 @@
             <h4>Page Footer</h4>
         </div><!-- /footer -->
     </div><!-- /page -->
+
+    <script type="text/javascript">
+        var loginButton = $('#login-with-facebook');
+ 
+        loginButton.on('click', function(e) {
+            e.preventDefault();
+         
+            FB.login(function(response) {
+                if (response.status === 'connected') {
+                    alert('logged in');
+                } else {
+                    alert('not logged in');
+                }
+            },{ scope: "email" });
+         
+        });
+    </script>
 
 </body>
 
