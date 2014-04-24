@@ -1,4 +1,4 @@
-// Add eventlistener for Facebook login, includes warning if objects don't exist
+// deviceready event listener, loads FB connect and checks if signed in
 if (typeof CDV === 'undefined') {
         alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     }
@@ -17,6 +17,7 @@ if (typeof CDV === 'undefined') {
             FB.getLoginStatus(function(response){
                 if (response.status === 'connected') {
                     $.mobile.changePage($("#mainpage"));
+                    var uid = response.authResponse.userID;
                 }
             });
 
@@ -26,22 +27,6 @@ if (typeof CDV === 'undefined') {
 }, false);
 
 $(document).ready(function(){
-    
-});
-
-// Function of login button pressed
-// TO DO: add conditional to check if single sign on has already occured
-var loginButton = $('#login-with-facebook');
-
-loginButton.on('click', function(e) {
-    e.preventDefault();
- 
-    FB.login(function(response) {
-        if (response.status === 'connected') {
-            alert('logged in');
-        } else {
-            alert('not logged in');
-        }
-    },{ scope: "email" });
- 
+    $("[data-role='header'").toolbar({theme:"a"});
+    Console.log("Header loaded");
 });
