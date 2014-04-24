@@ -4,6 +4,7 @@ $(document).bind('pageinit', function() {
     cache: false
   });
 
+  //Facebook login button, redirects to #mainpage if connected
   $(".FB-login").bind("click", function(event, ui){
  
     FB.login(function(response) {
@@ -15,6 +16,7 @@ $(document).bind('pageinit', function() {
     },{ scope: "email" });
   });
 
+  //Facebook logout button, redirects to #login screen
   $(".FB-logout").bind("click", function(event, ui){
  
     FB.logout(function(response){

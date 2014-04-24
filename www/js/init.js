@@ -27,6 +27,7 @@ if (typeof CDV === 'undefined') {
 }, false);
 
 $(document).ready(function(){
+
+    //Add toolbar to all pages
     $("[data-role='header'").toolbar({theme:"a"});
-    Console.log("Header loaded");
 });
