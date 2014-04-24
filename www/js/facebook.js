@@ -13,10 +13,21 @@ if (typeof CDV === 'undefined') {
                 nativeInterface: CDV.FB,
                 useCachedDialogs: false
             });
+
+            FB.getLoginStatus(function(response){
+                if (response.status === 'connected') {
+                    $.mobile.changePage($("#mainpage"));
+                }
+            });
+
         } catch (e) {
             alert(e);
         }
 }, false);
+
+$(document).ready(function(){
+    
+});
 
 // Function of login button pressed
 // TO DO: add conditional to check if single sign on has already occured
