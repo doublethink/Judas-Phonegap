@@ -33,7 +33,6 @@ $(document).ready(function(){
     //Add toolbar to all pages
     $("[data-role='header'").toolbar({theme:"a"});
 
-
 });
 
 // Center #center-button div in main page
@@ -45,5 +44,24 @@ $(document).delegate("#mainpage", "pageshow", function(e,data){
 $(document).delegate("#login", "pageshow", function(e,data){    
     $('#center-button').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#index-content').outerHeight())/2);
 });
+
+
+// GPS successfully occured function
+var onSuccess = function(position) {
+alert('Latitude: '          + position.coords.latitude          + '\n' +
+      'Longitude: '         + position.coords.longitude         + '\n' +
+      'Altitude: '          + position.coords.altitude          + '\n' +
+      'Accuracy: '          + position.coords.accuracy          + '\n' +
+      'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+      'Heading: '           + position.coords.heading           + '\n' +
+      'Speed: '             + position.coords.speed             + '\n' +
+      'Timestamp: '         + position.timestamp                + '\n');
+};
+
+// onError Callback receives a PositionError object
+function onError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
 
 
