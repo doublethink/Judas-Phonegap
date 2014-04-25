@@ -28,13 +28,6 @@ if (typeof CDV === 'undefined') {
         }
 }, false);
 
-$(document).ready(function(){
-
-    //Add toolbar to all pages
-    $("[data-role='header'").toolbar({theme:"a"});
-
-});
-
 // Center #center-button div in main page
 $(document).delegate("#mainpage", "pageshow", function(e,data){    
     $('#center-report').css('margin-top',($(window).height() - $('[data-role=header]').height() - $('[data-role=footer]').height() - $('#index-content').outerHeight())/2);
@@ -63,5 +56,3 @@ function onError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
 }
-
-

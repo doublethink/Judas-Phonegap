@@ -18,12 +18,6 @@
 </head>
 <body>
 
-    <!-- Universal header -->
-    <div data-role="header" data-position="fixed">
-            <a href="#menu-panel" data-icon="bars">Menu</a>
-            <h1>The Judas Project</h1>
-    </div>
-
     <!-- Start of login page, will not appear if already logged in -->
     <div data-role="page" id="login">
 
@@ -35,6 +29,12 @@
                 <li class="report-button">Report pest</li>
                 <li class="FB-logout">Logout</li>
             </ul>
+        </div>
+
+        <!-- Universal header -->
+        <div data-role="header" data-position="fixed">
+                <a href="#menu-panel" data-icon="bars">Menu</a>
+                <h1>The Judas Project</h1>
         </div>
 
         <!-- Page content -->
@@ -57,13 +57,19 @@
 
 
         <!-- Slider panel -->
-        <div data-role="panel" id="menu-panel" animate="true" display="reveal">
+        <div data-role="panel" id="main-menu-panel" animate="true" display="reveal">
             <ul data-role="listview">
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-login">Login with Facebook</li>
                 <li class="report-button">Report pest</li>
                 <li class="FB-logout">Logout</li>
             </ul>
+        </div>
+
+        <!-- Universal header -->
+        <div data-role="header" data-position="fixed">
+                <a href="#main-menu-panel" data-icon="bars">Menu</a>
+                <h1>The Judas Project</h1>
         </div>
 
         <!-- Page content -->
