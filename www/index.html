@@ -32,13 +32,23 @@
             <ul data-role="listview">
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-login">Login with Facebook</li>
+                <li class="report-button">Report pest</li>
                 <li class="FB-logout">Logout</li>
             </ul>
         </div>
 
-        <button class="FB-login" id="login-with-facebook">Login with Facebook</button>
+        <!-- Page content -->
+        <div role="main" class="ui-content" data-role="content">
 
-        <a href="#mainpage" data-role="button" data-mini="true">Shortcut to mainpage (dev)</a>
+            <div id="center-button" style="text-align: center;">
+                <button class="FB-login" id="login-with-facebook">Login with Facebook</button>
+
+                 <a href="#mainpage" data-role="button" data-mini="true">Shortcut to mainpage (dev)</a>
+            </div>
+
+        </div><!-- content-->
+
+        
 
     </div>
 
@@ -51,29 +61,19 @@
             <ul data-role="listview">
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-login">Login with Facebook</li>
+                <li class="report-button">Report pest</li>
                 <li class="FB-logout">Logout</li>
             </ul>
         </div>
 
+        <!-- Page content -->
         <div role="main" class="ui-content">
 
-            <label for="text-1">Get a quote:</label>
-            <input name="text-1" id="text1" value="1" type="text">
-            <input type="submit" value="Submit Button" id="button1" />
+            <div id="center-report" style="text-align: center;">
 
-    	<!-- put the result here -->
-    	<div id="result"  class="functions"></div>
+                <button class="send-report">Report pest</button>
 
-            <label for="text-2">Add a new quote:</label>
-            <p>Author:</p><form name="checkListForm">
-              <input type="text" name="checkListItem"/>
-            </form>
-
-            <p>Quote:</p><form name="checkListForm2">
-              <input type="text" name="checkListItem2"/>
-            </form>
-            
-            <input type="submit" value="Submit Button" id="button2" />
+            </div>
 
         </div><!-- /content -->
 

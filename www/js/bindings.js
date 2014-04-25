@@ -18,35 +18,55 @@ $(document).bind('pageinit', function() {
 
   //Facebook logout button, redirects to #login screen
   $(".FB-logout").bind("click", function(event, ui){
- 
     FB.logout(function(response){
       $.mobile.changePage($("#login"));
     });
   });
 
-  $( "#button1" ).bind( "click", function(event, ui) {
-    var q = $("#text1").val();
-    alert("Click "+q);
-    var jsonUrl = "http://sleepy-wildwood-7833.herokuapp.com/quote/"+q;
-    alert("Fetching result from "+jsonUrl);
-    $.get(jsonUrl, function(data) {
-      alert(data.author);
-      $("#result").html("<p><b>"+data.author+" said "+data.text+"</b></p>")
-    }, 'json');
+  //Slider button to report page, checks person is logged into Facebook
+  $(".report-button").bind("click", function(event, ui){
+    
+    FB.getLoginStatus(function(response){
+        if (response.status === 'connected') {
+            $.mobile.changePage($("#mainpage"));
+        } else {
+            $.mobile.changePage($("#login"));
+        }
+    });
   });
 
+  //Button for reporting pests
+  $( "#send-report" ).bind( "click", function(event, ui) {
 
-  $( "#button2" ).bind( "click", function(event, ui) {
-    var author = $('input[name=checkListItem]').val();
-    var quote = $('input[name=checkListItem2]').val();
-    alert("Posting a new quote");
-    var jsonUrl = "http://sleepy-wildwood-7833.herokuapp.com/quote";
+    // Proceed to send location if logged in
+    FB.getLoginStatus(function(response){
+        if (response.status === 'connected') {
+
+            // Get GPS location
+            var location = navigator.geolocation.getCurrentPosition(function(position){
+              alert('Latitude: '          + position.coords.latitude          + '\n' +
+                'Longitude: '         + position.coords.longitude         + '\n' +
+                'Altitude: '          + position.coords.altitude          + '\n' +
+                'Accuracy: '          + position.coords.accuracy          + '\n' +
+                'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                'Heading: '           + position.coords.heading           + '\n' +
+                'Speed: '             + position.coords.speed             + '\n' +
+                'Timestamp: '         + position.timestamp                + '\n');
+            }, function(error){
+              alert('code: '    + error.code    + '\n' +'message: ' + error.message + '\n');
+            });
+        } else {
+          alert("You are not signed in");
+          $.mobile.changePage($("#login"));
+        }
+    });
+/*
+    alert("Sending report");
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted";
     var newQuote = { "author" : author, "text" : quote };
-    $('input[name=checkListItem]').val("");
-    $('input[name=checkListItem2]').val("");
     $.post(jsonUrl,newQuote, function(data) {
       alert("Added quote number " + data.pos + " " + data.author + " " + data.text);
     }, 'json');
-  });
+  });*/
 
 });
