@@ -107,6 +107,10 @@ if (typeof FB === 'undefined') {
      
 document.addEventListener('deviceready', function() {
 
+    $(document).on('pagecreate', function(){
+      initbuttons();
+    });
+
     try {
         // Initialise FB SDK with app id
         FB.init({
@@ -127,7 +131,3 @@ document.addEventListener('deviceready', function() {
         alert(e);
     }
 }, false);
-
-$(document).on('pagecreate', function(){
-  initbuttons();
-});
