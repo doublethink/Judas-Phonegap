@@ -1,3 +1,5 @@
+
+
 // GPS successfully occured function
 var onSuccess = function(position) {
 alert('Latitude: '          + position.coords.latitude          + '\n' +
@@ -16,14 +18,10 @@ function onError(error) {
           'message: ' + error.message + '\n');
 }
 
-function initBindings(){
-  $.ajaxSetup ({
-    cache: false
-  });
-
+function bindlogin(){
   //Facebook login button, redirects to #mainpage if connected
   $(".FB-login").bind("click", function(event, ui){
- 
+    alert("login pressed");
     FB.login(function(response) {
         if (response.status === 'connected') {
             $.mobile.changePage($("#mainpage"));
@@ -32,14 +30,18 @@ function initBindings(){
         }
     },{ scope: "email" });
   });
+};
 
+function bindlogout(){
   //Facebook logout button, redirects to #login screen
   $(".FB-logout").bind("click", function(event, ui){
     FB.logout(function(response){
       $.mobile.changePage($("#login"));
     });
   });
+};
 
+function bindreportpage(){
   //Slider button to report page, checks person is logged into Facebook
   $(".report-button").bind("click", function(event, ui){
     
@@ -51,7 +53,9 @@ function initBindings(){
         }
     });
   });
+};
 
+function bindsendreport(){
   //Button for reporting pests
   $( "#send-report" ).bind( "click", function(event, ui) {
 
@@ -82,42 +86,48 @@ function initBindings(){
   });
 };
 
-// Initialisation functions
-function initjQuery(){
-  initBindings();
+function initbuttons(){
+    $.ajaxSetup ({
+      cache: false
+    });
+    bindlogin();
+    bindlogout();
+    bindreportpage();
+    bindsendreport(); 
 };
 
-
-
-
+  
 // deviceready event listener, loads FB connect and checks if signed in
 if (typeof CDV === 'undefined') {
         alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     }
-    if (typeof FB === 'undefined') {
-        alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-    }
+if (typeof FB === 'undefined') {
+    alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+}
      
-    document.addEventListener('deviceready', function() {
-        try {
-            // Initialise FB SDK with app id
-            FB.init({
-                appId: "628299267250368",
-                nativeInterface: CDV.FB,
-                useCachedDialogs: false
-            });
+document.addEventListener('deviceready', function() {
 
-            // check if user is already signed in, if so forward to report screen
-            FB.getLoginStatus(function(response){
-                if (response.status === 'connected') {
-                    $.mobile.changePage($("#mainpage"));
-                    var uid = response.authResponse.userID;
-                }
-            });
+    try {
+        // Initialise FB SDK with app id
+        FB.init({
+            appId: "628299267250368",
+            nativeInterface: CDV.FB,
+            useCachedDialogs: false
+        });
 
-        } catch (e) {
-            alert(e);
-        }
+        // check if user is already signed in, if so forward to report screen
+        FB.getLoginStatus(function(response){
+            if (response.status === 'connected') {
+                $.mobile.changePage($("#mainpage"));
+                var uid = response.authResponse.userID;
+            }
+        });
 
-        initjQuery();
+    } catch (e) {
+        alert(e);
+    }
 }, false);
+
+$(document).on('pagecreate', function(){
+  initbuttons();
+});
