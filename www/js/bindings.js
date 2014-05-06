@@ -1,5 +1,0 @@
-$(document).bind('pageinit', function() {
-  
-  
-
-});
