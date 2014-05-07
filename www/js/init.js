@@ -16,12 +16,11 @@ alert('Latitude: '          + position.coords.latitude          + '\n' +
 function onError(error) {
     alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
-}
+};
 
 function bindlogin(){
   //Facebook login button, redirects to #mainpage if connected
   $(".FB-login").bind("click", function(event, ui){
-    alert("login pressed");
     FB.login(function(response) {
         if (response.status === 'connected') {
             $.mobile.changePage($("#mainpage"));
@@ -30,6 +29,12 @@ function bindlogin(){
         }
     },{ scope: "email" });
   });
+};
+
+function bindloginmenu(){
+  $(".FB-loginmenu").bind("click", function(event, ui){
+    $.mobile.changePage($("#login"));
+  }); 
 };
 
 function bindlogout(){
@@ -44,16 +49,10 @@ function bindlogout(){
 function bindreportpage(){
   //Slider button to report page, checks person is logged into Facebook
   $(".report-button").bind("click", function(event, ui){
-    
-    FB.getLoginStatus(function(response){
-        if (response.status === 'connected') {
-            $.mobile.changePage($("#mainpage"));
-        } else {
-            $.mobile.changePage($("#login"));
-        }
-    });
+    $.mobile.changePage($("#mainpage"));
   });
 };
+
 
 function bindsendreport(){
   //Button for reporting pests
@@ -64,6 +63,7 @@ function bindsendreport(){
 
     //Check user is logged into Facebook
     FB.getLoginStatus(function(response){
+        sessionStorage.FBresponse = response;
         if (response.status === 'connected') {
             
           navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -94,6 +94,7 @@ function initbuttons(){
     bindlogout();
     bindreportpage();
     bindsendreport(); 
+    bindloginmenu();
 };
 
   
@@ -109,6 +110,8 @@ document.addEventListener('deviceready', function() {
 
     $(document).on('pagecreate', function(){
       initbuttons();
+      $.mobile.buttonMarkup.hoverdelay = 0;
+      $.mobile.defaultPageTransition   = 'pop';
     });
 
     try {
@@ -121,10 +124,12 @@ document.addEventListener('deviceready', function() {
 
         // check if user is already signed in, if so forward to report screen
         FB.getLoginStatus(function(response){
-            if (response.status === 'connected') {
-                $.mobile.changePage($("#mainpage"));
-                var uid = response.authResponse.userID;
-            }
+          sessionStorage.FBresponse = response;
+          if (response.status === 'connected') {
+            $.mobile.changePage($("#mainpage"));
+          } else {
+            alert("Login Failed");
+          }
         });
 
     } catch (e) {
