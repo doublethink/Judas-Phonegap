@@ -2,14 +2,14 @@
 
 // GPS successfully occured function
 var onSuccess = function(position) {
-alert('Latitude: '          + position.coords.latitude          + '\n' +
-      'Longitude: '         + position.coords.longitude         + '\n' +
-      'Altitude: '          + position.coords.altitude          + '\n' +
-      'Accuracy: '          + position.coords.accuracy          + '\n' +
-      'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-      'Heading: '           + position.coords.heading           + '\n' +
-      'Speed: '             + position.coords.speed             + '\n' +
-      'Timestamp: '         + position.timestamp                + '\n');
+  var jsonUrl = "http://judas.herokuapp.com/pestspotted";
+  var position = { "lat" : position.coords.latitude, "long" : position.coords.longitude, "accuracy" : position.coords.accuracy, "timestamp" : position.coords.timestamp };
+  var response = { position, sessionStorage.FBresponse };
+  alert(response);
+  $.post(jsonUrl,response, function(data) {
+    alert("post success");
+  }, 'json');
+
 };
 
 // onError Callback receives a PositionError object
@@ -58,9 +58,6 @@ function bindsendreport(){
   //Button for reporting pests
   $( "#send-report" ).bind( "click", function(event, ui) {
 
-    //Show loading image
-    $.mobile.loading( "show");
-
     //Check user is logged into Facebook
     FB.getLoginStatus(function(response){
         sessionStorage.FBresponse = response;
@@ -74,15 +71,7 @@ function bindsendreport(){
         }
     });
 
-    $.mobile.loading("hide");
     
-/*
-    alert("Sending report");
-    var jsonUrl = "http://judas.herokuapp.com/pestspotted";
-    var newQuote = { "author" : author, "text" : quote };
-    $.post(jsonUrl,newQuote, function(data) {
-      alert("Added quote number " + data.pos + " " + data.author + " " + data.text);
-    }, 'json');*/
   });
 };
 
