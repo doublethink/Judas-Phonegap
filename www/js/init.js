@@ -1,11 +1,14 @@
 
+var uid = "undefined";
+var accessToken = "undefined";
 
 // GPS successfully occured function
 var onSuccess = function(position) {
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
   var position = { "lat" : position.coords.latitude, "long" : position.coords.longitude, "accuracy" : position.coords.accuracy, "timestamp" : position.coords.timestamp };
-  var response = { position, sessionStorage.FBresponse };
-  alert(response);
+  var auth = { "uid" : uid , "accessToken" : accessToken };
+  var response = { "position": position, "auth": auth };
+  alert("lat=" + response.position.lat + "\nlong=" + response.position.long + "\nuid=" + uid);
   $.post(jsonUrl,response, function(data) {
     alert("post success");
   }, 'json');
@@ -62,7 +65,12 @@ function bindsendreport(){
     FB.getLoginStatus(function(response){
         sessionStorage.FBresponse = response;
         if (response.status === 'connected') {
-            
+          //window.localStorage.setItem("uid",response.authResponse.userID);
+          //window.localStorage.setItem("accessToken", response.authResponse.accessToken);
+    
+          uid = response.authResponse.userID.toString();
+          accessToken = response.authResponse.accessToken.toString();
+          alert(uid);
           navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
         } else {
@@ -113,7 +121,6 @@ document.addEventListener('deviceready', function() {
 
         // check if user is already signed in, if so forward to report screen
         FB.getLoginStatus(function(response){
-          sessionStorage.FBresponse = response;
           if (response.status === 'connected') {
             $.mobile.changePage($("#mainpage"));
           } else {
