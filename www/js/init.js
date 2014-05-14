@@ -3,13 +3,13 @@ var uid = "undefined";
 var accessToken = "undefined";
 
 // GPS successfully occured function
-var onSuccess = function(position) {
+var onSuccess = function(location) {
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
-  var position = { "lat" : position.coords.latitude, "long" : position.coords.longitude, "accuracy" : position.coords.accuracy, "timestamp" : position.coords.timestamp };
+  var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
   var auth = { "uid" : uid , "accessToken" : accessToken };
-  var response = { "position": position, "auth": auth };
-  alert("lat=" + response.position.lat + "\nlong=" + response.position.long + "\nuid=" + uid);
-  $.post(jsonUrl,response, function(data) {
+  var packet = { "position": position, "auth": auth };
+  alert("latitude=" + packet.position.latitude + "\nlongitude=" + packet.position.longitude + "\nuid=" + uid);
+  $.post(jsonUrl, packet, function(data) {
     alert("post success");
   }, 'json');
 
