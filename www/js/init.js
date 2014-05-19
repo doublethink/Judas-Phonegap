@@ -5,7 +5,7 @@ var onSuccess = function(location) {
   
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
   var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
-  var auth = { "uid" : window.sessionStorage.uid , "accessToken" : window.sessionStorage.accessToken };
+  var auth = { "uid" : window.sessionStorage.userID , "accessToken" : window.sessionStorage.accessToken };
   var packet = { "position": position, "auth": auth };
   
   // MOVE THIS WHEN SERVER IS RETURNING RESPONSE
@@ -30,6 +30,7 @@ function bindlogin(){
   $(".FB-login").bind("click", function(event, ui){
     FB.login(function(response) {
         if (response.status === 'connected') {
+            window.localStorage.userID = response.authResponse.userID;
             $.mobile.changePage($("#mainpage"));
         } else {
             alert('Unable to login');
@@ -107,13 +108,14 @@ function bindsendreport(){
           window.sessionStorage.accessToken = response.authResponse.accessToken;
 
           // UID not returned in login check so make api call for email
-          FB.api('/me?fields=email', function(response){
+          FB.api('/me?fields=email,id', function(response){
             window.sessionStorage.uid = response.email;
-            if (response.email != undefined) {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
-          } else {
-            alert("Email not returned");
-          }
+            window.sessionStorage.userID = response.id;
+            if (response.id != undefined) {
+              navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            } else {
+              alert("Email not returned");
+            }
           });
 
         } else {
@@ -167,8 +169,6 @@ document.addEventListener('deviceready', function() {
         FB.getLoginStatus(function(response){
           if (response.status === 'connected') {
             $.mobile.changePage($("#mainpage"));
-          } else {
-            alert("Login Failed");
           }
         });
 
