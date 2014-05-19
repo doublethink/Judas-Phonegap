@@ -1,14 +1,17 @@
 
-var uid = "undefined";
-var accessToken = "undefined";
 
 // GPS successfully occured function
 var onSuccess = function(location) {
+  
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
   var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
-  var auth = { "uid" : uid , "accessToken" : accessToken };
+  var auth = { "uid" : window.sessionStorage.uid , "accessToken" : window.sessionStorage.accessToken };
   var packet = { "position": position, "auth": auth };
-  alert("latitude=" + packet.position.latitude + "\nlongitude=" + packet.position.longitude + "\nuid=" + uid);
+  
+  // MOVE THIS WHEN SERVER IS RETURNING RESPONSE
+  $.mobile.loading("hide");
+  $('#popupDialog').popup('close');
+
   $.post(jsonUrl, packet, function(data) {
     alert("post success");
   }, 'json');
@@ -17,8 +20,9 @@ var onSuccess = function(location) {
 
 // onError Callback receives a PositionError object
 function onError(error) {
-    alert('code: '    + error.code    + '\n' +
+  alert('code: '    + error.code    + '\n' +
           'message: ' + error.message + '\n');
+  $.mobile.loading("hide");
 };
 
 function bindlogin(){
@@ -56,29 +60,68 @@ function bindreportpage(){
   });
 };
 
+function bindswipe(){
+  // Swipe function for report page
+  $( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+          if ( e.type === "swiperight"  ) {
+              $( "#report-panel" ).panel( "open" );
+          }
+        } else {
+          if ( e.type === "swipeleft"  ) {
+              $( "#report-panel" ).panel( "close" );
+          }
+        }
+    });
+
+  // Swipe function for login page
+  $( document ).on( "swipeleft swiperight", "#login", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+          if ( e.type === "swiperight"  ) {
+              $( "#login-panel" ).panel( "open" );
+          }
+        } else {
+          if ( e.type === "swipeleft"  ) {
+              $( "#login-panel" ).panel( "close" );
+          }
+        }
+    });
+};
+
 
 function bindsendreport(){
   //Button for reporting pests
   $( "#send-report" ).bind( "click", function(event, ui) {
 
+    //show loader
+    $.mobile.loading( "show", {
+      text: "Sending...",
+      textVisible: true,
+      theme: "a",
+      html: ""
+    });
+
     //Check user is logged into Facebook
     FB.getLoginStatus(function(response){
-        sessionStorage.FBresponse = response;
         if (response.status === 'connected') {
-          //window.localStorage.setItem("uid",response.authResponse.userID);
-          //window.localStorage.setItem("accessToken", response.authResponse.accessToken);
-    
-          uid = response.authResponse.userID.toString();
-          accessToken = response.authResponse.accessToken.toString();
-          alert(uid);
-          navigator.geolocation.getCurrentPosition(onSuccess, onError);
+          window.sessionStorage.accessToken = response.authResponse.accessToken;
+
+          // UID not returned in login check so make api call for email
+          FB.api('/me?fields=email', function(response){
+            window.sessionStorage.uid = response.email;
+            if (response.email != undefined) {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+          } else {
+            alert("Email not returned");
+          }
+          });
 
         } else {
             alert("Not logged in");
             $.mobile.changePage($("#login"));
+            $.mobile.loading("hide");
         }
     });
-
     
   });
 };
@@ -92,6 +135,7 @@ function initbuttons(){
     bindreportpage();
     bindsendreport(); 
     bindloginmenu();
+    bindswipe();
 };
 
   
@@ -131,4 +175,5 @@ document.addEventListener('deviceready', function() {
     } catch (e) {
         alert(e);
     }
+
 }, false);
