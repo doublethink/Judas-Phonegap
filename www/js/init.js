@@ -4,7 +4,8 @@
 var onSuccess = function(location) {
   
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
-  var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
+  var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, 
+                  "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
   var auth = { "uid" : window.sessionStorage.userID , "accessToken" : window.sessionStorage.accessToken };
   var packet = { "position": position, "auth": auth };
   
@@ -63,7 +64,7 @@ function bindreportpage(){
 
 function bindswipe(){
   // Swipe function for report page
-  $( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
+  /*$( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
           if ( e.type === "swiperight"  ) {
               $( "#report-panel" ).panel( "open" );
@@ -73,7 +74,7 @@ function bindswipe(){
               $( "#report-panel" ).panel( "close" );
           }
         }
-    });
+    });*/
 
   // Swipe function for login page
   $( document ).on( "swipeleft swiperight", "#login", function( e ) {
@@ -154,7 +155,7 @@ document.addEventListener('deviceready', function() {
     $(document).on('pagecreate', function(){
       initbuttons();
       $.mobile.buttonMarkup.hoverdelay = 0;
-      $.mobile.defaultPageTransition   = 'pop';
+      $.mobile.defaultPageTransition   = 'slide';
     });
 
     try {
