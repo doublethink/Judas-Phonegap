@@ -2,3 +2,9 @@
 	background-color: #4c66a4;
 	color: white;
 }
+
+.img-carousel {
+	height: 100px;
+	padding:2px;
+   	background-color:black;
+}

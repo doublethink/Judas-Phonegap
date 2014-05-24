@@ -63,8 +63,9 @@ function bindreportpage(){
 };
 
 function bindswipe(){
+  /*
   // Swipe function for report page
-  /*$( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
+  $( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
           if ( e.type === "swiperight"  ) {
               $( "#report-panel" ).panel( "open" );
@@ -87,6 +88,18 @@ function bindswipe(){
               $( "#login-panel" ).panel( "close" );
           }
         }
+    });
+};
+
+function initCarousel(){
+  $('.carousel-pest').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      touchMove: true,
+      slidesToScroll: 1,
+      arrows: false
     });
 };
 
@@ -139,6 +152,7 @@ function initbuttons(){
     bindsendreport(); 
     bindloginmenu();
     bindswipe();
+    initCarousel();
 };
 
   
@@ -155,7 +169,7 @@ document.addEventListener('deviceready', function() {
     $(document).on('pagecreate', function(){
       initbuttons();
       $.mobile.buttonMarkup.hoverdelay = 0;
-      $.mobile.defaultPageTransition   = 'slide';
+      $.mobile.defaultPageTransition   = 'none';
     });
 
     try {
@@ -178,3 +192,16 @@ document.addEventListener('deviceready', function() {
     }
 
 }, false);
+/*
+//include in device ready once debuging is done
+$(document).ready(function(){
+    $('.carousel-pest').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      touchMove: true,
+      slidesToScroll: 1,
+      arrows: false
+    });
+});*/
