@@ -152,7 +152,7 @@ function initbuttons(){
     bindsendreport(); 
     bindloginmenu();
     bindswipe();
-    initCarousel();
+    //initCarousel();
 };
 
   
@@ -192,7 +192,7 @@ document.addEventListener('deviceready', function() {
     }
 
 }, false);
-/*
+
 //include in device ready once debuging is done
 $(document).ready(function(){
     $('.carousel-pest').slick({
@@ -204,4 +204,4 @@ $(document).ready(function(){
       slidesToScroll: 1,
       arrows: false
     });
-});*/
+});
