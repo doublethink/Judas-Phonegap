@@ -45,12 +45,14 @@
             <div id="center-button" style="text-align: center;">
 
                 <button class="FB-login" id="login-with-facebook" data-inline="true">Login with Facebook</button>
-                <div data-role="collapsible" id="collapse-why-facebook" data-collapsed-icon="info" data-expanded-icon="info">
+
+                <a href="#popupFacebook" data-rel="popup" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all ui-btn-inline" data-transition="pop" data-position-to="window">Basic Popup</a>
+                <div data-role="popup" id="popupFacebook" class="ui-content">
                     <h4>Why Facebook?</h4>
                     <p>The Judas Project requires that you are logged into Facebook before you can report any pests that you spot.<br>
-                    This is only so that we can isolate users that appear to be dishonest with their submissions.<br>
-                    Your Facebook ID is obscured so that we can never identify you personally.</p>
-                </div>
+                        This is only so that we can isolate users that appear to be dishonest with their submissions.<br>
+                        Your Facebook ID is obscured so that we can never identify you personally.</p>
+                </div>  
 
                 <!-- remove before production -->
                  <a href="#mainpage" data-role="button" data-mini="true" data-inline="true">Shortcut to mainpage (dev)</a>
