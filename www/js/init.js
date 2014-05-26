@@ -241,7 +241,7 @@ document.addEventListener('deviceready', function() {
     }
 
 }, false);
-/*
+
 //include in device ready once debuging is done
 $(document).ready(function(){
 
@@ -288,4 +288,4 @@ $(document).ready(function(){
       touchMove: true,
       arrows: false
     });
-});*/
+});
