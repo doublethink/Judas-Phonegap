@@ -7,7 +7,7 @@ var onSuccess = function(location) {
   var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, 
                   "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
   var auth = { "uid" : window.sessionStorage.userID , "accessToken" : window.sessionStorage.accessToken };
-  var packet = { "position": position, "auth": auth };
+  var packet = { "position": position, "auth": auth, "pest" : window.sessionStorage.currentPest };
   
   // MOVE THIS WHEN SERVER IS RETURNING RESPONSE
   $.mobile.loading("hide");
@@ -28,7 +28,7 @@ function onError(error) {
 
 function bindlogin(){
   //Facebook login button, redirects to #mainpage if connected
-  $(".FB-login").bind("click", function(event, ui){
+  $(".FB-login").on("click", function(){
     FB.login(function(response) {
         if (response.status === 'connected') {
             window.localStorage.userID = response.authResponse.userID;
@@ -41,23 +41,29 @@ function bindlogin(){
 };
 
 function bindloginmenu(){
-  $(".FB-loginmenu").bind("click", function(event, ui){
+  $(".FB-loginmenu").on("click", function(){
     $.mobile.changePage($("#login"));
   }); 
 };
 
 function bindlogout(){
   //Facebook logout button, redirects to #login screen
-  $(".FB-logout").bind("click", function(event, ui){
+  $(".FB-logout").on("click", function(){
     FB.logout(function(response){
       $.mobile.changePage($("#login"));
     });
   });
 };
 
+function bindmenupest(){
+  $(".menu-pest-button").on("click", function(){
+    $.mobile.changePage($("#pestpage"));
+  }); 
+};
+
 function bindreportpage(){
   //Slider button to report page, checks person is logged into Facebook
-  $(".report-button").bind("click", function(event, ui){
+  $(".report-button").on("click", function(){
     $.mobile.changePage($("#mainpage"));
   });
 };
@@ -98,7 +104,6 @@ function initCarousel(){
       speed: 300,
       slidesToShow: 3,
       touchMove: true,
-      slidesToScroll: 1,
       arrows: false
     });
 };
@@ -108,38 +113,78 @@ function bindsendreport(){
   //Button for reporting pests
   $( "#send-report" ).bind( "click", function(event, ui) {
 
-    //show loader
-    $.mobile.loading( "show", {
-      text: "Sending...",
-      textVisible: true,
-      theme: "a",
-      html: ""
-    });
+    if (window.sessionStorage.currentPest === undefined){
+      alert("Please select a pest before reporting");
+    } else {
+      //show loader
+      $.mobile.loading( "show", {
+        text: "Sending...",
+        textVisible: true,
+        theme: "a",
+        html: ""
+      });
 
-    //Check user is logged into Facebook
-    FB.getLoginStatus(function(response){
-        if (response.status === 'connected') {
-          window.sessionStorage.accessToken = response.authResponse.accessToken;
+      //Check user is logged into Facebook
+      FB.getLoginStatus(function(response){
+          if (response.status === 'connected') {
+            window.sessionStorage.accessToken = response.authResponse.accessToken;
 
-          // UID not returned in login check so make api call for email
-          FB.api('/me?fields=email,id', function(response){
-            window.sessionStorage.uid = response.email;
-            window.sessionStorage.userID = response.id;
-            if (response.id != undefined) {
-              navigator.geolocation.getCurrentPosition(onSuccess, onError);
-            } else {
-              alert("Email not returned");
-            }
-          });
+            // UID not returned in login check so make api call for email
+            FB.api('/me?fields=email,id', function(response){
+              window.sessionStorage.uid = response.email;
+              window.sessionStorage.userID = response.id;
+              if (response.id != undefined) {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+              } else {
+                alert("Email not returned");
+              }
+            });
 
-        } else {
-            alert("Not logged in");
-            $.mobile.changePage($("#login"));
-            $.mobile.loading("hide");
-        }
-    });
-    
+          } else {
+              alert("Not logged in");
+              $.mobile.changePage($("#login"));
+              $.mobile.loading("hide");
+          }
+      });
+    }
   });
+};
+
+function bindexpandpestdiv(){
+  //hide all pest info initially
+    $('.collapse-pest-div').hide();
+
+    $( '#btn-collapse-possum' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-possum').show({duration:400});
+      window.sessionStorage.currentPest = "possum";
+    });
+
+    $( '#btn-collapse-other1' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other1').show({duration:400});
+      window.sessionStorage.currentPest = "other1";
+    });
+    $( '#btn-collapse-other2' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other2').show({duration:400});
+      window.sessionStorage.currentPest = "other2";
+    });
+    $( '#btn-collapse-other3' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other3').show({duration:400});
+      window.sessionStorage.currentPest = "other3";
+    });
+    $( '#btn-collapse-other4' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other4').show({duration:400});
+      window.sessionStorage.currentPest = "other4";
+    });
+    $( '#btn-collapse-other5' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other5').show({duration:400});
+      window.sessionStorage.currentPest = "other5";
+    });
 };
 
 function initbuttons(){
@@ -152,7 +197,11 @@ function initbuttons(){
     bindsendreport(); 
     bindloginmenu();
     bindswipe();
-    //initCarousel();
+    bindmenupest();
+
+    // Uncomment for production
+    bindexpandpestdiv();
+    initCarousel();
 };
 
   
@@ -168,7 +217,7 @@ document.addEventListener('deviceready', function() {
 
     $(document).on('pagecreate', function(){
       initbuttons();
-      $.mobile.buttonMarkup.hoverdelay = 0;
+      $.mobile.buttonMarkup.hoverdelay = 200;
       $.mobile.defaultPageTransition   = 'none';
     });
 
@@ -192,16 +241,51 @@ document.addEventListener('deviceready', function() {
     }
 
 }, false);
-
+/*
 //include in device ready once debuging is done
 $(document).ready(function(){
+
+    //hide all pest info initially
+    $('.collapse-pest-div').hide();
+
+    $( '#btn-collapse-possum' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-possum').show({duration:400});
+      window.sessionStorage.currentPest = "possum";
+    });
+
+    $( '#btn-collapse-other1' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other1').show({duration:400});
+      window.sessionStorage.currentPest = "other1";
+    });
+    $( '#btn-collapse-other2' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other2').show({duration:400});
+      window.sessionStorage.currentPest = "other2";
+    });
+    $( '#btn-collapse-other3' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other3').show({duration:400});
+      window.sessionStorage.currentPest = "other3";
+    });
+    $( '#btn-collapse-other4' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other4').show({duration:400});
+      window.sessionStorage.currentPest = "other4";
+    });
+    $( '#btn-collapse-other5' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other5').show({duration:400});
+      window.sessionStorage.currentPest = "other5";
+    });
+
     $('.carousel-pest').slick({
       dots: false,
       infinite: true,
       speed: 300,
       slidesToShow: 3,
       touchMove: true,
-      slidesToScroll: 1,
       arrows: false
     });
-});
+});*/

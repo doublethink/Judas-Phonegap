@@ -29,6 +29,7 @@
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-loginmenu">Login with Facebook</li>
                 <li class="report-button">Report pest</li>
+                <li class="menu-pest-button">Pest Information</li>
                 <li class="FB-logout">Logout</li>
             </ul>
         </div>
@@ -56,6 +57,8 @@
 
                 <!-- remove before production -->
                  <a href="#mainpage" data-role="button" data-mini="true" data-inline="true">Shortcut to mainpage (dev)</a>
+                 <a href="#pestpage" data-role="button" data-mini="true" data-inline="true">Shortcut to pestpage (dev)</a>
+                 <!-- REMOVE before production -->
             </div>
 
         </div><!-- content-->
@@ -72,6 +75,7 @@
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-loginmenu">Login with Facebook</li>
                 <li class="report-button">Report pest</li>
+                <li class="menu-pest-button">Pest Information</li>
                 <li class="FB-logout">Logout</li>
             </ul>
         </div>
@@ -90,13 +94,44 @@
 
                 <!-- Image Carousel -->
                 <div class="carousel-pest">
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz1.png"/></a></div>
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz2.png"/></a></div>
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz3.png"/></a></div>
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz4.png"/></a></div>
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz5.png"/></a></div>
-                  <div><a href="#"><img class="img-carousel" src="img/lazyfonz6.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-possum"><img class="img-carousel" src="img/lazyfonz1.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-other1"><img class="img-carousel" src="img/lazyfonz2.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-other2"><img class="img-carousel" src="img/lazyfonz3.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-other3"><img class="img-carousel" src="img/lazyfonz4.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-other4"><img class="img-carousel" src="img/lazyfonz5.png"/></a></div>
+                  <div><a href="#" id="btn-collapse-other5"><img class="img-carousel" src="img/lazyfonz6.png"/></a></div>
                 </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-possum">
+                  <h3>Possum</h3>
+                  <p>Possums are shit</p>
+                </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-other1">
+                  <h3>Other1</h3>
+                  <p>Inset other1 details here</p>
+                </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-other2">
+                  <h3>Other2</h3>
+                  <p>Inset other2 details here</p>
+                </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-other3">
+                  <h3>Other3</h3>
+                  <p>Inset other3 details here</p>
+                </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-other4">
+                  <h3>Other4</h3>
+                  <p>Inset other4 details here</p>
+                </div>
+
+                <div class="ui-body ui-body-b ui-corner-all collapse-pest-div" id="div-collapse-other5">
+                  <h3>Other5</h3>
+                  <p>Inset other5 details here</p>
+                </div>
+
 
                 <!-- REPORT BUTTON -->
                 <a href="#popupDialog" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-icon="check" data-theme="a">Report Pest</a>
@@ -120,6 +155,35 @@
         </div><!-- /content -->
 
     </div><!-- /page -->
+
+    <!-- Start of pest info page -->
+    <div data-role="page" id="pestpage">
+
+        <!-- Slider panel -->
+        <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+            <ul data-role="listview">
+                <li data-role="list-divider">Selector Menu</li>
+                <li class="FB-loginmenu">Login with Facebook</li>
+                <li class="report-button">Report pest</li>
+                <li class="menu-pest-button">Pest Information</li>
+                <li class="FB-logout">Logout</li>
+            </ul>
+        </div>
+
+        <!-- Universal header -->
+        <div data-role="header" data-position="fixed">
+                <a href="#pest-panel" data-icon="bars">Menu</a>
+                <h1>The Judas Project</h1>
+        </div>
+
+        <!-- Page content -->
+        <div role="main" class="ui-content" data-role="content">
+
+            <h1>Pests</h1>
+
+        </div><!-- content-->
+
+    </div>
 
     <script type="text/javascript" src="slick/slick.min.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
