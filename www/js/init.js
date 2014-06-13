@@ -4,34 +4,26 @@
 var onSuccess = function(location) {
   
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
+  var position = { "latitude" : location.coords.latitude, "longitude" : location.coords.longitude, 
+                  "accuracy" : location.coords.accuracy, "timestamp" : location.coords.timestamp };
+  var auth = { "uid" : window.sessionStorage.userID , "accessToken" : window.sessionStorage.accessToken };
+  var packet = { "position": position, "auth": auth, "pest" : window.sessionStorage.currentPest };
+  
+  // MOVE THIS WHEN SERVER IS RETURNING RESPONSE
+  $.mobile.loading("hide");
+  $('#popupDialog').popup('close');
 
-  // Post packet to sever
-  $.ajax({
-    type: "POST",
-    url: jsonUrl,
-    data: {"packet":{
-      "position": {
-        "longitude": location.coords.longitude, "latitude": location.coords.latitude, "accuracy": location.coords.accuracy, 
-        "timestamp": location.timestamp}, 
-      "auth": 
-      {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
-      }},
-    success: function(data, textStatus, jqHXR){
-      $.mobile.loading("hide");
-      alert(data.text1);
-      alert(data.text2);
-    },
-    error: function(jqXHR, textStatus, errorThrown){
-      $.mobile.loading("hide");
-      alert(JSON.stringify(jqXHR) + "error: " + errorThrown + "status: "+ textStatus);
-    }
-  });
+  $.post(jsonUrl, packet, function(data) {
+    alert("post success");
+  }, 'json');
+
 };
 
 // onError Callback receives a PositionError object
 function onError(error) {
+  alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
   $.mobile.loading("hide");
-  alert("GPS error\nPlease ensure that you have your location enabled under settings.");
 };
 
 function bindlogin(){
@@ -77,9 +69,9 @@ function bindreportpage(){
 };
 
 function bindswipe(){
-  
+  /*
   // Swipe function for report page
-  $( document ).on( "swipeleft swiperight", ".main-swipe-wrapper", function( e ) {
+  $( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
           if ( e.type === "swiperight"  ) {
               $( "#report-panel" ).panel( "open" );
@@ -89,7 +81,7 @@ function bindswipe(){
               $( "#report-panel" ).panel( "close" );
           }
         }
-    });
+    });*/
 
   // Swipe function for login page
   $( document ).on( "swipeleft swiperight", "#login", function( e ) {
@@ -103,40 +95,16 @@ function bindswipe(){
           }
         }
     });
-
-  // Swipe function for pest page
-  $( document ).on( "swipeleft swiperight", "#pestpage", function( e ) {
-        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-          if ( e.type === "swiperight"  ) {
-              $( "#pest-panel" ).panel( "open" );
-          }
-        } else {
-          if ( e.type === "swipeleft"  ) {
-              $( "#pest-panel" ).panel( "close" );
-          }
-        }
-    });
 };
 
 function initCarousel(){
   $('.carousel-pest').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    centerMode: true,
-    dots: false
-  });
-
-  $('.info-carousel').slick({
       dots: false,
       infinite: true,
       speed: 300,
-      slidesToShow: 1,
+      slidesToShow: 3,
       touchMove: true,
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 3000,
+      arrows: false
     });
 };
 
@@ -179,7 +147,6 @@ function bindsendreport(){
           }
       });
     }
-    $('#popupDialog').popup('close');
   });
 };
 
@@ -248,6 +215,12 @@ if (typeof FB === 'undefined') {
      
 document.addEventListener('deviceready', function() {
 
+    $(document).on('pagecreate', function(){
+      initbuttons();
+      $.mobile.buttonMarkup.hoverdelay = 200;
+      $.mobile.defaultPageTransition   = 'none';
+    });
+
     try {
         // Initialise FB SDK with app id
         FB.init({
@@ -271,8 +244,48 @@ document.addEventListener('deviceready', function() {
 
 //include in device ready once debuging is done
 $(document).ready(function(){
-    $.mobile.buttonMarkup.hoverdelay = 200;
-    $.mobile.defaultPageTransition   = 'none'; 
 
-    initbuttons();
+    //hide all pest info initially
+    $('.collapse-pest-div').hide();
+
+    $( '#btn-collapse-possum' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-possum').show({duration:400});
+      window.sessionStorage.currentPest = "possum";
+    });
+
+    $( '#btn-collapse-other1' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other1').show({duration:400});
+      window.sessionStorage.currentPest = "other1";
+    });
+    $( '#btn-collapse-other2' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other2').show({duration:400});
+      window.sessionStorage.currentPest = "other2";
+    });
+    $( '#btn-collapse-other3' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other3').show({duration:400});
+      window.sessionStorage.currentPest = "other3";
+    });
+    $( '#btn-collapse-other4' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other4').show({duration:400});
+      window.sessionStorage.currentPest = "other4";
+    });
+    $( '#btn-collapse-other5' ).on('click',function() {
+      $('.collapse-pest-div').hide({duration:200});
+      $('#div-collapse-other5').show({duration:400});
+      window.sessionStorage.currentPest = "other5";
+    });
+
+    $('.carousel-pest').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      touchMove: true,
+      arrows: false
+    });
 });
