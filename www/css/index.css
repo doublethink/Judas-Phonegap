@@ -8,3 +8,17 @@
 	padding:2px;
    	background-color:black;
 }
+.img-carousel {
+	height: 100px;
+	left: 50%;
+	padding:2px;
+   	background-color:black;
+}
+
+.ui-page {
+      background:url(img/NZbg.png) ;
+      -webkit-background-size: cover;          
+      -moz-background-size: cover;         
+       -o-background-size: cover;          
+       background-size: cover;
+ }  
