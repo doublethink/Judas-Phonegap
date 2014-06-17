@@ -119,29 +119,6 @@ function bindswipe(){
     });
 };
 
-function initCarousel(){
-  $('.carousel-pest').slick({
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-    centerMode: true,
-    dots: false
-  });
-
-  $('.info-carousel').slick({
-      dots: false,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      touchMove: true,
-      arrows: false,
-      autoplay: true,
-      autoplaySpeed: 3000,
-    });
-};
-
-
 function bindsendreport(){
   //Button for reporting pests
   $( "#send-report" ).bind( "click", function(event, ui) {
@@ -212,11 +189,8 @@ function initbuttons(){
     bindloginmenu();
     bindswipe();
     bindmenupest();
-	bindsendreport()
-
-    // Uncomment for production
+	  bindsendreport();
     bindexpandpestdiv();
-    //initCarousel();
 };
 
   

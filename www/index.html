@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Judas Project</title>
+    <title>SnapPest</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,7 @@
 <body  style="background-repeat: no-repeat; background-size: 100%;">
 
     <!-- Start of login page, will not appear if already logged in -->
-    <div data-role="page" id="login">
+    <div data-role="page" id="login" class="ui-page">
 
         <!-- Slider panel -->
         <div data-role="panel" id="login-panel" animate="true" display="reveal">
@@ -36,7 +36,7 @@
         <!-- Universal header -->
         <div data-role="header" data-position="fixed">
                 <a href="#login-panel" data-icon="bars">Menu</a>
-                <h1>The Judas Project</h1>
+                <h1>SnapPest</h1>
         </div>
 
         <!-- Page content -->
@@ -49,7 +49,7 @@
                 <a href="#popupFacebook" data-rel="popup" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all ui-btn-inline" data-transition="pop" data-position-to="window">Basic Popup</a>
                 <div data-role="popup" id="popupFacebook" class="ui-content">
                     <h4>Why Facebook?</h4>
-                    <p>The Judas Project requires that you are logged into Facebook before you can report any pests that you spot.<br>
+                    <p>SnapPest requires that you are logged into Facebook before you can report any pests that you spot.<br>
                         This is only so that we can isolate users that appear to be dishonest with their submissions.<br>
                         Your Facebook ID is obscured so that we can never identify you personally.</p>
                 </div>  
@@ -63,7 +63,7 @@
     </div>
 
     <!-- MAIN PAGE -->
-    <div data-role="page" id="mainpage">
+    <div data-role="page" id="mainpage" class="ui-page">
 
 
         <!-- Slider panel -->
@@ -80,7 +80,7 @@
         <!-- Universal header -->
         <div data-role="header" data-position="fixed">
                 <a href="#report-panel" data-icon="bars">Menu</a>
-                <h1>The Judas Project</h1>
+                <h1>SnapPest</h1>
         </div>
 
         <!-- Page content -->
@@ -94,7 +94,7 @@
         
             </div>
 
-				<!-- REPORT BUTTON -->
+			<!-- REPORT POPUP -->
             <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
                 <div data-role="header" data-theme="a" class="ui-corner-top">
@@ -106,14 +106,14 @@
                     <a href="#" data-role="button" data-inline="true" data-rel="back">Cancel</a>
                     <button data-inline="true" data-rel="back" id="send-report">Report pest</button>
                 </div>
-            </div><!--report button-->
+            </div><!--report popup-->
 
         </div><!-- /content -->
 
     </div><!-- /page -->
 
     <!-- Start of pest info page -->
-    <div data-role="page" id="pestpage">
+    <div data-role="page" id="pestpage" class="ui-page">
 
         <!-- Slider panel -->
         <div data-role="panel" id="pest-panel" animate="true" display="reveal">
@@ -129,7 +129,7 @@
         <!-- Universal header -->
         <div data-role="header" data-position="fixed">
                 <a href="#pest-panel" data-icon="bars">Menu</a>
-                <h1>The Judas Project</h1>
+                <h1>SnapPest</h1>
         </div>
 
         <!-- Page content -->
@@ -142,7 +142,6 @@
     </div>
 
     <script type="text/javascript" src="js/init.js"></script>
-
 
 </body>
 
