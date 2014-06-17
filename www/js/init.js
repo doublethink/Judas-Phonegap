@@ -197,6 +197,9 @@ function bindexpandpestdiv(){
     $( '#stoat' ).on('click',function() {
       window.sessionStorage.currentPest = "stoat";
     });
+	$( '#other' ).on('click',function() {
+      window.sessionStorage.currentPest = "other";
+    });
 };
 
 function initbuttons(){
