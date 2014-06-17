@@ -22,3 +22,31 @@
        -o-background-size: cover;          
        background-size: cover;
  }  
+ #rabbit{
+ 	position: fixed;
+ 	height: 50%;
+ 	width: 50%;
+ 	top:0%;
+ 	left: 0%;
+ }
+  #possum{
+ 	position: fixed;
+ 	height: 50%;
+ 	width: 50%;
+ 	top:0%;
+ 	left: 50%;
+ }
+ #stoat{
+ 	position: fixed;
+ 	height: 50%;
+ 	width: 50%;
+ 	top:50%;
+ 	left: 0%;
+ }
+ #other{
+ 	position: fixed;
+ 	height: 50%;
+ 	width: 50%;
+ 	top:50%;
+ 	left: 50%;
+ }
