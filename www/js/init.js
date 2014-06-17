@@ -4,6 +4,8 @@
 var onSuccess = function(location) {
   
   var jsonUrl = "http://judas.herokuapp.com/pestspotted";
+  var date = new Date();
+  var currtime = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.toLocaleTimeString();
 
   // Post packet to sever
   $.ajax({
@@ -11,15 +13,14 @@ var onSuccess = function(location) {
     url: jsonUrl,
     data: {"packet":{
       "position": {
-        "longitude": location.coords.longitude, "latitude": location.coords.latitude, "accuracy": location.coords.accuracy, 
-        "timestamp": location.timestamp}, 
-      "auth": 
+        "longitude": location.coords.longitude, "latitude": location.coords.latitude, "accuracy": location.coords.accuracy,
+        "datestamp": currtime}, "pest": window.sessionStorage.currentPest,
+      "auth":
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }},
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      alert(data.text1);
-      alert(data.text2);
+      alert(data.stringify());
     },
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
@@ -51,7 +52,7 @@ function bindlogin(){
 function bindloginmenu(){
   $(".FB-loginmenu").on("click", function(){
     $.mobile.changePage($("#login"));
-  }); 
+  });
 };
 
 function bindlogout(){
@@ -66,7 +67,7 @@ function bindlogout(){
 function bindmenupest(){
   $(".menu-pest-button").on("click", function(){
     $.mobile.changePage($("#pestpage"));
-  }); 
+  });
 };
 
 function bindreportpage(){
@@ -79,13 +80,13 @@ function bindreportpage(){
 function bindswipe(){
   
   // Swipe function for report page
-  $( document ).on( "swipeleft swiperight", ".main-swipe-wrapper", function( e ) {
+  $( document ).on( "swipeleft swiperight", "#mainpage", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-          if ( e.type === "swiperight"  ) {
+          if ( e.type === "swiperight" ) {
               $( "#report-panel" ).panel( "open" );
           }
         } else {
-          if ( e.type === "swipeleft"  ) {
+          if ( e.type === "swipeleft" ) {
               $( "#report-panel" ).panel( "close" );
           }
         }
@@ -94,11 +95,11 @@ function bindswipe(){
   // Swipe function for login page
   $( document ).on( "swipeleft swiperight", "#login", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-          if ( e.type === "swiperight"  ) {
+          if ( e.type === "swiperight" ) {
               $( "#login-panel" ).panel( "open" );
           }
         } else {
-          if ( e.type === "swipeleft"  ) {
+          if ( e.type === "swipeleft" ) {
               $( "#login-panel" ).panel( "close" );
           }
         }
@@ -107,11 +108,11 @@ function bindswipe(){
   // Swipe function for pest page
   $( document ).on( "swipeleft swiperight", "#pestpage", function( e ) {
         if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-          if ( e.type === "swiperight"  ) {
+          if ( e.type === "swiperight" ) {
               $( "#pest-panel" ).panel( "open" );
           }
         } else {
-          if ( e.type === "swipeleft"  ) {
+          if ( e.type === "swipeleft" ) {
               $( "#pest-panel" ).panel( "close" );
           }
         }
@@ -185,38 +186,16 @@ function bindsendreport(){
 
 function bindexpandpestdiv(){
   //hide all pest info initially
-    $('.collapse-pest-div').hide();
 
-    $( '#btn-collapse-possum' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-possum').show({duration:400});
+    $( '#possum' ).on('click',function() {
       window.sessionStorage.currentPest = "possum";
     });
 
-    $( '#btn-collapse-other1' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-other1').show({duration:400});
-      window.sessionStorage.currentPest = "other1";
+    $( '#rabbit' ).on('click',function() {
+      window.sessionStorage.currentPest = "rabbit";
     });
-    $( '#btn-collapse-other2' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-other2').show({duration:400});
-      window.sessionStorage.currentPest = "other2";
-    });
-    $( '#btn-collapse-other3' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-other3').show({duration:400});
-      window.sessionStorage.currentPest = "other3";
-    });
-    $( '#btn-collapse-other4' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-other4').show({duration:400});
-      window.sessionStorage.currentPest = "other4";
-    });
-    $( '#btn-collapse-other5' ).on('click',function() {
-      $('.collapse-pest-div').hide({duration:200});
-      $('#div-collapse-other5').show({duration:400});
-      window.sessionStorage.currentPest = "other5";
+    $( '#stoat' ).on('click',function() {
+      window.sessionStorage.currentPest = "stoat";
     });
 };
 
@@ -227,14 +206,14 @@ function initbuttons(){
     bindlogin();
     bindlogout();
     bindreportpage();
-    bindsendreport(); 
     bindloginmenu();
     bindswipe();
     bindmenupest();
+	bindsendreport()
 
     // Uncomment for production
     bindexpandpestdiv();
-    initCarousel();
+    //initCarousel();
 };
 
   
@@ -271,8 +250,8 @@ document.addEventListener('deviceready', function() {
 
 //include in device ready once debuging is done
 $(document).ready(function(){
-    $.mobile.buttonMarkup.hoverdelay = 200;
-    $.mobile.defaultPageTransition   = 'none'; 
 
+    $.mobile.buttonMarkup.hoverdelay = 200;
+    $.mobile.defaultPageTransition = 'none';
     initbuttons();
 });
