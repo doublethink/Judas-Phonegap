@@ -21,6 +21,7 @@ var onSuccess = function(location) {
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
       alert("Success");
+      $( "#thanks-popup" ).popup( "open" );
     },
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
