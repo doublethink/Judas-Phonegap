@@ -20,7 +20,7 @@ var onSuccess = function(location) {
       }},
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      alert(data.stringify());
+      alert("Success");
     },
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
@@ -175,7 +175,7 @@ function bindexpandpestdiv(){
       window.sessionStorage.currentPest = "stoat";
     });
 	$( '#other' ).on('click',function() {
-      window.sessionStorage.currentPest = "other";
+      window.sessionStorage.currentPest = "cat";
     });
 };
 
