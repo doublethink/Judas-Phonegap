@@ -20,9 +20,9 @@ var onSuccess = function(location) {
       }},
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      $( "#thanks-popup" ).popup( "open" );
+      $( "#thanks-popup" ).popup( "open", {transition: 'fade'});
       setTimeout(function () {
-        $("#thanks-popup").popup('close');
+        $("#thanks-popup").popup('close', {transition: 'fade'});
        }, 2000);  
     },
     error: function(jqXHR, textStatus, errorThrown){
