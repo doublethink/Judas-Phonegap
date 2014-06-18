@@ -43,7 +43,7 @@ function bindlogin(){
             window.localStorage.userID = response.authResponse.userID;
             $.mobile.changePage($("#mainpage"));
         } else {
-            alert('Unable to login');
+            alert('Unable to login. Is your device connected?');
         }
     },{ scope: "email" });
   });
