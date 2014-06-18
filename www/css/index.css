@@ -16,13 +16,12 @@
 }
 
 .ui-page {
-      background:url(img/NZbg.png) ;
-      -webkit-background-size: cover;          
-      -moz-background-size: cover;         
-       -o-background-size: cover;          
-       background-size: cover;
+      background:url(images/NZbg1.png) ;
+      background-size: cover;          
  }  
  #rabbit{
+  background:url(images/Rabbit.png) ;
+  background-size: 100% 100%;
  	position: fixed;
  	height: 50%;
  	width: 50%;
@@ -30,13 +29,17 @@
  	left: 0%;
  }
   #possum{
- 	position: fixed;
- 	height: 50%;
- 	width: 50%;
- 	top:0%;
- 	left: 50%;
+    background:url(images/Possum.png) ;
+    background-size: 100% 100%;
+   	position: fixed;
+   	height: 50%;
+   	width: 50%;
+   	top:0%;
+   	left: 50%;
  }
  #stoat{
+  background:url(images/Stoat.png) ;
+  background-size: 100% 100%;
  	position: fixed;
  	height: 50%;
  	width: 50%;
@@ -44,6 +47,8 @@
  	left: 0%;
  }
  #other{
+  background:url(images/Cat.png) ;
+  background-size: 100% 100%;
  	position: fixed;
  	height: 50%;
  	width: 50%;
