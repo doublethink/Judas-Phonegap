@@ -231,5 +231,12 @@ $(document).ready(function(){
 
     $.mobile.buttonMarkup.hoverdelay = 200;
     $.mobile.defaultPageTransition = 'none';
+    $( ".photopopup" ).on({
+        popupbeforeposition: function() {
+            var maxHeight = $( window ).height() - 60 + "px";
+            $( ".photopopup img" ).css( "max-height", maxHeight );
+        }
+    });
+    
     initbuttons();
 });
