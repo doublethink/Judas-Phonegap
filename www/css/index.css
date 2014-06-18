@@ -19,6 +19,9 @@
       background:url(images/NZbg1.png) ;
       background-size: cover;          
  }  
+ .photopopup {
+    background: transparent;
+ }
  #rabbit{
   background:url(images/Rabbit.png) ;
   background-size: 100% 100%;

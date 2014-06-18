@@ -20,8 +20,10 @@ var onSuccess = function(location) {
       }},
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      alert("Success");
       $( "#thanks-popup" ).popup( "open" );
+      setTimeout(function () {
+        $("#thanks-popup").popup('close');
+       }, 2000);  
     },
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
@@ -237,6 +239,6 @@ $(document).ready(function(){
             $( ".photopopup img" ).css( "max-height", maxHeight );
         }
     });
-    
+
     initbuttons();
 });
