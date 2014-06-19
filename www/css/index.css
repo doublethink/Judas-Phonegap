@@ -12,7 +12,11 @@
 	
 }
 
-
+#infoButt{
+	position:fixed;
+	top:0.5%;
+	left:2.5%;
+}
 
 #rabbitInfo{
 	top:10%;
