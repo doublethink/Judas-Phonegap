@@ -71,6 +71,30 @@
 	height: 55px;
 	width: 55px;
 }
+#reportButCat{
+	position: fixed;
+	z-index: 10;
+	top: 87%;
+	left: 85%;
+	height: 55px;
+	width: 55px;
+}
+#reportButPos{
+	position: fixed;
+	z-index: 10;
+	top: 37%;
+	left: 85%;
+	height: 55px;
+	width: 55px;
+}
+#reportButRat{
+	position: fixed;
+	z-index: 10;
+	top: 37%;
+	left: 36%;
+	height: 55px;
+	width: 55px;
+}
 
 .img-carousel {
 	height: 100px;
