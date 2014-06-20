@@ -80,6 +80,7 @@
         <!-- Universal header -->
         <div data-role="header" data-position="fixed">
                 <div><a href="#pestpage"><img id="infoButt" src="css/images/AboutButton.png"></a></div>
+                <div><a href="#logout" class="FB-logout"><img id="logoutButt" src="css/images/logout.png"></a></div>
                 <h1>SnapPest</h1>
         </div>
 	
@@ -89,16 +90,17 @@
         <div role="main" class="ui-content">
 		<div>
 			<a href="#pestpage" data-rel="infoPage"><div id="rabbitInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
-			<a href="#pestpage" data-rel="infoPage"><div id="possumInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
+			<a href="#possumpage" data-rel="infoPage"><div id="possumInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
 			<a href="#pestpage" data-rel="infoPage"><div id="stoatInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
 			<a href="#pestpage" data-rel="infoPage"><div id="otherInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
+
 		</div>
 			<div>
                 <a href="#popupDialog" data-rel="popup"><div class="main-image" id="rabbit" ></div></a>
                 <a href="#popupDialog" data-rel="popup"><div class="main-image" id="possum" ></div></a>
                 <a href="#popupDialog" data-rel="popup"><div class="main-image" id="stoat" ></div></a>
                 <a href="#popupDialog" data-rel="popup"><div class="main-image" id="other" ></div></a>
-        
+                <div><img id="reportButStoat" src="css/images/reportBut.png"></div>        
             </div>
 
 			<!-- REPORT POPUP -->
@@ -147,6 +149,39 @@
         <div role="main" class="ui-content" data-role="content">
 
 			<h1>Placeholder</h1>
+           
+        </div><!-- content-->
+
+    </div>
+
+ <!-- Start of possum info page -->
+    <div data-role="page" id="possumpage" class="ui-page">
+
+        <!-- Slider panel -->
+        <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+            <ul data-role="listview">
+                <li data-role="list-divider">Selector Menu</li>
+                <li class="FB-loginmenu">Login with Facebook</li>
+                <li class="report-button">Report pest</li>
+                <li class="menu-pest-button">Pest Information</li>
+                <li class="FB-logout">Logout</li>
+            </ul>
+        </div>
+
+        <!-- Universal header -->
+         <div data-role="header" data-position="fixed">
+                <div><a href="#pestpage"><img id="infoButt" src="css/images/AboutButton.png"></a></div>
+                <div><a href="#logout" class="FB-logout"><img id="logoutButt" src="css/images/logout.png"></a></div>
+                <h1>SnapPest</h1>
+        </div>
+
+        <!-- Page content -->
+        <div role="main" class="ui-content" data-role="content">
+
+            <div><img id="reportBut" src="css/images/reportBut.png"></div>
+
+            <div ><img id="posInfoPage" src="css/images/PossumInfoPage.png"></div>
+
            
         </div><!-- content-->
 
