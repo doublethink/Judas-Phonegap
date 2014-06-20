@@ -89,10 +89,10 @@
         <!-- Page content -->
         <div role="main" class="ui-content">
 		<div>
-			<a href="#ratpage" data-rel="infoPage"><div id="ratInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
-			<a href="#possumpage" data-rel="infoPage"><div id="possumInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
-			<a href="#stoatpage" data-rel="infoPage"><div id="stoatInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
-			<a href="#pestpage" data-rel="infoPage"><div id="otherInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
+			<a href="#ratpage" data-rel="infoPage"><div id="ratInfo" class="infoButton"><img class="infoButton report-rat" src="css/images/InfoButton.png"></div></a>
+			<a href="#possumpage" data-rel="infoPage"><div id="possumInfo" class="infoButton"><img class="infoButton report-possum" src="css/images/InfoButton.png"></div></a>
+			<a href="#stoatpage" data-rel="infoPage"><div id="stoatInfo" class="infoButton"><img class="infoButton report-stoat" src="css/images/InfoButton.png"></div></a>
+			<a href="#pestpage" data-rel="infoPage"><div id="otherInfo" class="infoButton"><img class="infoButton report-cat" src="css/images/InfoButton.png"></div></a>
 
 		</div>
 			<div>
@@ -100,14 +100,14 @@
                 <div class="main-image" id="possum" ></div>
                 <div class="main-image" id="stoat" ></div>
                 <div class="main-image" id="other" ></div>
-                <a href="#popupDialog" data-rel="popup"><img id="reportButStoat" src="css/images/reportBut.png"> </a>   
-                <a href="#popupDialog" data-rel="popup"><img id="reportButCat" src="css/images/reportBut.png"> </a>
-                <a href="#popupDialog" data-rel="popup"><img id="reportButPos" src="css/images/reportBut.png"> </a>
-                <a href="#popupDialog" data-rel="popup"><img id="reportButRat" src="css/images/reportBut.png"> </a>
+                <a href="#popupDialog" data-rel="popup"><img class="reportButStoat report-stoat" src="css/images/reportBut.png"> </a>   
+                <a href="#popupDialog" data-rel="popup"><img class="reportButCat report-cat" src="css/images/reportBut.png"> </a>
+                <a href="#popupDialog" data-rel="popup"><img class="reportButPos report-possum" src="css/images/reportBut.png"> </a>
+                <a href="#popupDialog" data-rel="popup"><img class="reportButRat report-rat" src="css/images/reportBut.png"> </a>
             </div>
 
 			<!-- REPORT POPUP -->
-            <div data-role="popup" id="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" 								style="max-width:400px;" class="ui-corner-all" data-transition="fade">
+            <div data-role="popup" id="popupDialog" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" 								style="max-width:400px;" class="ui-corner-all" data-transition="fade">
                 <div data-role="header" data-theme="a" class="ui-corner-top">
                   
                 </div>
@@ -115,12 +115,12 @@
                     <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
                     <p>This action cannot be undone.</p>
                     <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
-                    <div id="report"><button data-inline="true" data-rel="back" id="send-report"><b>Report</b></button></div>
+                    <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                 </div>
             </div><!--report popup-->
 
             <!-- Thank you Popup -->
-            <div data-role="popup" id="thanks-popup" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                 <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
             </div>  
 
@@ -161,7 +161,7 @@
     <div data-role="page" id="possumpage" class="ui-page">
 
         <!-- Slider panel -->
-        <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+        <div data-role="panel" id="possum-panel" animate="true" display="reveal">
             <ul data-role="listview">
                 <li data-role="list-divider">Selector Menu</li>
                 <li class="FB-loginmenu">Login with Facebook</li>
@@ -181,9 +181,27 @@
         <!-- Page content -->
         <div role="main" class="ui-content" data-role="content">
 
-            <div><img id="reportBut" src="css/images/reportBut.png"></div>
+            <a href="#popup-report-possum" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
 
             <div ><img class="InfoPage" src="css/images/PossumInfoPage.png"></div>
+
+            <!-- REPORT POPUP -->
+            <div data-role="popup" id="popup-report-possum" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false"                style="max-width:400px;" class="ui-corner-all" data-transition="fade">
+                <div data-role="header" data-theme="a" class="ui-corner-top">
+                  
+                </div>
+                <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
+                    <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
+                    <p>This action cannot be undone.</p>
+                    <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
+                    <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
+                </div>
+            </div><!--report popup-->
+
+            <!-- Thank you Popup -->
+            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+                <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
+            </div>  
 
            
         </div><!-- content-->
@@ -197,7 +215,7 @@
        <div data-role="page" id="ratpage" class="ui-page">
 
            <!-- Slider panel -->
-           <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+           <div data-role="panel" id="rat-panel" animate="true" display="reveal">
                <ul data-role="listview">
                    <li data-role="list-divider">Selector Menu</li>
                    <li class="FB-loginmenu">Login with Facebook</li>
@@ -217,10 +235,27 @@
            <!-- Page content -->
            <div role="main" class="ui-content" data-role="content">
 
-               <div><img id="reportBut" src="css/images/reportBut.png"></div>
+               <a href="#popup-report-rat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
 
                <div ><img class="InfoPage" src="css/images/RatInfoPage.png"></div>
 
+               <!-- REPORT POPUP -->
+              <div data-role="popup" id="popup-report-rat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
+                  <div data-role="header" data-theme="a" class="ui-corner-top">
+                    
+                  </div>
+                  <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
+                      <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
+                      <p>This action cannot be undone.</p>
+                      <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
+                      <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
+                  </div>
+              </div><!--report popup-->
+
+            <!-- Thank you Popup -->
+            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+                <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
+            </div> 
            
            </div><!-- content-->
 
@@ -232,7 +267,7 @@
           <div data-role="page" id="stoatpage" class="ui-page">
 
               <!-- Slider panel -->
-              <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+              <div data-role="panel" id="stoat-panel" animate="true" display="reveal">
                   <ul data-role="listview">
                       <li data-role="list-divider">Selector Menu</li>
                       <li class="FB-loginmenu">Login with Facebook</li>
@@ -252,9 +287,27 @@
               <!-- Page content -->
               <div role="main" class="ui-content" data-role="content">
 
-                  <div><img id="reportBut" src="css/images/reportBut.png"></div>
+                  <a href="#popup-report-stoat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
 
                   <div ><img class="InfoPage" src="css/images/StoatInfoPage.png"></div>
+
+                   <!-- REPORT POPUP -->
+                  <div data-role="popup" id="popup-report-stoat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
+                      <div data-role="header" data-theme="a" class="ui-corner-top">
+                        
+                      </div>
+                      <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
+                          <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
+                          <p>This action cannot be undone.</p>
+                          <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
+                          <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
+                      </div>
+                  </div><!--report popup-->
+
+                <!-- Thank you Popup -->
+                <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+                    <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
+                </div> 
 
            
               </div><!-- content-->

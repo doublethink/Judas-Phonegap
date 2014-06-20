@@ -20,9 +20,9 @@ var onSuccess = function(location) {
       }},
     success: function(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      $( "#thanks-popup" ).popup( "open", {transition: 'fade'});
+      $( ".thanks-popup" ).popup( "open", {transition: 'fade'});
       setTimeout(function () {
-        $("#thanks-popup").popup('close', {transition: 'fade'});
+        $(".thanks-popup").popup('close', {transition: 'fade'});
        }, 2000);  
     },
     error: function(jqXHR, textStatus, errorThrown){
@@ -120,11 +120,50 @@ function bindswipe(){
           }
         }
     });
+
+  // Swipe function for possum page
+  $( document ).on( "swipeleft swiperight", "#possumpage", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+          if ( e.type === "swiperight" ) {
+              $( "#possum-panel" ).panel( "open" );
+          }
+        } else {
+          if ( e.type === "swipeleft" ) {
+              $( "#possum-panel" ).panel( "close" );
+          }
+        }
+    });
+
+  // Swipe function for stoat page
+  $( document ).on( "swipeleft swiperight", "#ratpage", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+          if ( e.type === "swiperight" ) {
+              $( "#rat-panel" ).panel( "open" );
+          }
+        } else {
+          if ( e.type === "swipeleft" ) {
+              $( "#rat-panel" ).panel( "close" );
+          }
+        }
+    });
+
+  // Swipe function for stoat page
+  $( document ).on( "swipeleft swiperight", "#stoatpage", function( e ) {
+        if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+          if ( e.type === "swiperight" ) {
+              $( "#stoat-panel" ).panel( "open" );
+          }
+        } else {
+          if ( e.type === "swipeleft" ) {
+              $( "#stoat-panel" ).panel( "close" );
+          }
+        }
+    });
 };
 
 function bindsendreport(){
   //Button for reporting pests
-  $( "#send-report" ).bind( "click", function(event, ui) {
+  $( ".send-report" ).bind( "click", function(event, ui) {
 
     if (window.sessionStorage.currentPest === undefined){
       alert("Please select a pest before reporting");
@@ -160,24 +199,24 @@ function bindsendreport(){
           }
       });
     }
-    $('#popupDialog').popup('close');
+    $('.popupDialog').popup('close');
   });
 };
 
 function bindexpandpestdiv(){
   //hide all pest info initially
 
-    $( '#possum' ).on('click',function() {
+    $( '.report-possum' ).on('click',function() {
       window.sessionStorage.currentPest = "possum";
     });
 
-    $( '#rabbit' ).on('click',function() {
-      window.sessionStorage.currentPest = "rabbit";
+    $( '.report-rat' ).on('click',function() {
+      window.sessionStorage.currentPest = "rat";
     });
-    $( '#stoat' ).on('click',function() {
+    $( '.report-stoat' ).on('click',function() {
       window.sessionStorage.currentPest = "stoat";
     });
-	$( '#other' ).on('click',function() {
+	$( '.report-cat' ).on('click',function() {
       window.sessionStorage.currentPest = "cat";
     });
 };
