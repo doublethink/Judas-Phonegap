@@ -89,9 +89,9 @@
         <!-- Page content -->
         <div role="main" class="ui-content">
 		<div>
-			<a href="#pestpage" data-rel="infoPage"><div id="rabbitInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
+			<a href="#ratpage" data-rel="infoPage"><div id="ratInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
 			<a href="#possumpage" data-rel="infoPage"><div id="possumInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
-			<a href="#pestpage" data-rel="infoPage"><div id="stoatInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
+			<a href="#stoatpage" data-rel="infoPage"><div id="stoatInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
 			<a href="#pestpage" data-rel="infoPage"><div id="otherInfo" class="infoButton"><img class="infoButton" src="css/images/InfoButton.png"></div></a>
 
 		</div>
@@ -183,12 +183,83 @@
 
             <div><img id="reportBut" src="css/images/reportBut.png"></div>
 
-            <div ><img id="posInfoPage" src="css/images/PossumInfoPage.png"></div>
+            <div ><img class="InfoPage" src="css/images/PossumInfoPage.png"></div>
 
            
         </div><!-- content-->
 
     </div>
+	
+	
+	
+	
+    <!-- Start of RAT info page -->
+       <div data-role="page" id="ratpage" class="ui-page">
+
+           <!-- Slider panel -->
+           <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+               <ul data-role="listview">
+                   <li data-role="list-divider">Selector Menu</li>
+                   <li class="FB-loginmenu">Login with Facebook</li>
+                   <li class="report-button">Report pest</li>
+                   <li class="menu-pest-button">Pest Information</li>
+                   <li class="FB-logout">Logout</li>
+               </ul>
+           </div>
+
+           <!-- Universal header -->
+            <div data-role="header" data-position="fixed">
+                   <div><a href="#pestpage"><img id="infoButt" src="css/images/AboutButton.png"></a></div>
+                   <div><a href="#logout" class="FB-logout"><img id="logoutButt" src="css/images/logout.png"></a></div>
+                   <h1>SnapPest</h1>
+           </div>
+
+           <!-- Page content -->
+           <div role="main" class="ui-content" data-role="content">
+
+               <div><img id="reportBut" src="css/images/reportBut.png"></div>
+
+               <div ><img class="InfoPage" src="css/images/RatInfoPage.png"></div>
+
+           
+           </div><!-- content-->
+
+       </div>
+	   
+	   
+	   
+       <!-- Start of Stoat info page -->
+          <div data-role="page" id="stoatpage" class="ui-page">
+
+              <!-- Slider panel -->
+              <div data-role="panel" id="pest-panel" animate="true" display="reveal">
+                  <ul data-role="listview">
+                      <li data-role="list-divider">Selector Menu</li>
+                      <li class="FB-loginmenu">Login with Facebook</li>
+                      <li class="report-button">Report pest</li>
+                      <li class="menu-pest-button">Pest Information</li>
+                      <li class="FB-logout">Logout</li>
+                  </ul>
+              </div>
+
+              <!-- Universal header -->
+               <div data-role="header" data-position="fixed">
+                      <div><a href="#pestpage"><img id="infoButt" src="css/images/AboutButton.png"></a></div>
+                      <div><a href="#logout" class="FB-logout"><img id="logoutButt" src="css/images/logout.png"></a></div>
+                      <h1>SnapPest</h1>
+              </div>
+
+              <!-- Page content -->
+              <div role="main" class="ui-content" data-role="content">
+
+                  <div><img id="reportBut" src="css/images/reportBut.png"></div>
+
+                  <div ><img class="InfoPage" src="css/images/StoatInfoPage.png"></div>
+
+           
+              </div><!-- content-->
+
+          </div>
 
     <script type="text/javascript" src="js/init.js"></script>
 
