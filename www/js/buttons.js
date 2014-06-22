@@ -135,3 +135,30 @@ function bindswipe(){
     });
 
 };
+
+function bindrecordcurrentpest(){
+  //hide all pest info initially
+
+    $( '.report-possum' ).on('click',function() {
+      window.sessionStorage.currentPest = "possum";
+    });
+
+    $( '.report-rat' ).on('click',function() {
+      window.sessionStorage.currentPest = "rat";
+    });
+    $( '.report-stoat' ).on('click',function() {
+      window.sessionStorage.currentPest = "stoat";
+    });
+  $( '.report-cat' ).on('click',function() {
+      window.sessionStorage.currentPest = "cat";
+    });
+};
+
+function bindphotopopup(){
+  $( ".photopopup" ).on({
+        popupbeforeposition: function() {
+            var maxHeight = $( window ).height() - 60 + "px";
+            $( ".photopopup img" ).css( "max-height", maxHeight );
+        }
+    });
+}

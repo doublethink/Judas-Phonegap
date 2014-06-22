@@ -1,5 +1,3 @@
-
-
 // GPS successfully occured function
 var onSuccess = function(location) {
   
@@ -44,6 +42,10 @@ function bindsendreport(){
   //Button for reporting pests
   $( ".send-report" ).bind( "click", function(event, ui) {
 
+    //Get the current page
+    var currentPage = $.mobile.activePage.attr('id');
+    currentPage = currentPage.substring(0, currentPage.indexOf("page"));
+
     if (window.sessionStorage.currentPest === undefined){
       alert("Please select a pest before reporting");
     } else {
@@ -62,12 +64,11 @@ function bindsendreport(){
 
             // UID not returned in login check so make api call for email
             FB.api('/me?fields=email,id', function(response){
-              window.sessionStorage.uid = response.email;
               window.sessionStorage.userID = response.id;
               if (response.id != undefined) {
                 navigator.geolocation.getCurrentPosition(onSuccess, onError);
               } else {
-                alert("Email not returned");
+                alert("Could not retreive your ID");
               }
             });
 
@@ -78,36 +79,26 @@ function bindsendreport(){
           }
       });
     }
-    $('.popupDialog').popup('close');
+    switch (currentPage) {
+      case 'main':
+        $('#popup-report-main').popup('close');
+        break;
+      case 'rat':
+        $('#popup-report-rat').popup('close');
+        break;
+      case 'stoat':
+        $('#popup-report-stoat').popup('close');
+        break;
+      case 'cat':
+        $('#popup-report-cat').popup('close');
+        break;
+      case 'possum':
+        $('#popup-report-possum').popup('close');
+        break;
+    }
+    
   });
 };
-
-function bindexpandpestdiv(){
-  //hide all pest info initially
-
-    $( '.report-possum' ).on('click',function() {
-      window.sessionStorage.currentPest = "possum";
-    });
-
-    $( '.report-rat' ).on('click',function() {
-      window.sessionStorage.currentPest = "rat";
-    });
-    $( '.report-stoat' ).on('click',function() {
-      window.sessionStorage.currentPest = "stoat";
-    });
-	$( '.report-cat' ).on('click',function() {
-      window.sessionStorage.currentPest = "cat";
-    });
-};
-
-function bindphotopopup(){
-  $( ".photopopup" ).on({
-        popupbeforeposition: function() {
-            var maxHeight = $( window ).height() - 60 + "px";
-            $( ".photopopup img" ).css( "max-height", maxHeight );
-        }
-    });
-}
 
 function initbuttons(){
     $.ajaxSetup ({
@@ -120,7 +111,7 @@ function initbuttons(){
     bindswipe();
     bindmenupest();
 	  bindsendreport();
-    bindexpandpestdiv();
+    bindrecordcurrentpest();
     bindphotopopup();
 };
 
