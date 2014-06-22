@@ -92,14 +92,15 @@
 
         <!-- Page content -->
         <div role="main" class="ui-content">
-		<div>
-			<a href="#ratpage" data-rel="infoPage" data-transition="slide"><div id="ratInfo" class="infoButton"><img class="infoButton report-rat" src="css/images/InfoButton.png"></div></a>
-			<a href="#possumpage" data-rel="infoPage" data-transition="slide"><div id="possumInfo" class="infoButton"><img class="infoButton report-possum" src="css/images/InfoButton.png"></div></a>
-			<a href="#stoatpage" data-rel="infoPage" data-transition="slide"><div id="stoatInfo" class="infoButton"><img class="infoButton report-stoat" src="css/images/InfoButton.png"></div></a>
-			<a href="#catpage" data-rel="infoPage" data-transition="slide"><div id="catInfo" class="infoButton"><img class="infoButton report-cat" src="css/images/InfoButton.png"></div></a>
+          		<div>
+          			<a href="#ratpage" data-rel="infoPage" data-transition="slide"><div id="ratInfo" class="infoButton"><img class="infoButton report-rat" src="css/images/InfoButton.png"></div></a>
+          			<a href="#possumpage" data-rel="infoPage" data-transition="slide"><div id="possumInfo" class="infoButton"><img class="infoButton report-possum" src="css/images/InfoButton.png"></div></a>
+          			<a href="#stoatpage" data-rel="infoPage" data-transition="slide"><div id="stoatInfo" class="infoButton"><img class="infoButton report-stoat" src="css/images/InfoButton.png"></div></a>
+          			<a href="#catpage" data-rel="infoPage" data-transition="slide"><div id="catInfo" class="infoButton"><img class="infoButton report-cat" src="css/images/InfoButton.png"></div></a>
 
-		</div>
-			<div>
+          		</div>
+			
+              <div>
                 <div class="main-image" id="rat" ></div>
                 <div class="main-image" id="possum" ></div>
                 <div class="main-image" id="stoat" ></div>
@@ -112,12 +113,9 @@
 
 			<!-- REPORT POPUP -->
             <div data-role="popup" id="popupDialog" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" 								style="max-width:400px;" class="ui-corner-all" data-transition="fade">
-                <div data-role="header" data-theme="a" class="ui-corner-top">
-                  
-                </div>
+                
                 <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
-                    <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
-                    <p>This action cannot be undone.</p>
+                    <img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png">
                     <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
                     <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                 </div>
@@ -157,15 +155,14 @@
 
         <!-- Page content -->
         <div role="main" class="ui-content" data-role="content">
-<div><img class="InfoPestPage" src="css/images/About.png"></div>
 
+          <div><img class="InfoPestPage" src="css/images/About.png"></div>
 
-
-<a href="#possumpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-possum" src="css/images/Possum.jpg"></div></a>
-<a href="#catpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="cat" ><img class="pestPic report-cat" src="css/images/Cat.jpg"></div></a>
-<a href="#ratpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="ratt" ><img class="pestPic report-rat" src="css/images/Rat.jpg"></div></a>
-<a href="#stoatpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-rat" src="css/images/Stoat.jpg"></div></a>
-</div><!-- content-->
+          <a href="#possumpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-possum" src="css/images/Possum.jpg"></div></a>
+          <a href="#catpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="cat" ><img class="pestPic report-cat" src="css/images/Cat.jpg"></div></a>
+          <a href="#ratpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="ratt" ><img class="pestPic report-rat" src="css/images/Rat.jpg"></div></a>
+          <a href="#stoatpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-rat" src="css/images/Stoat.jpg"></div></a>
+        </div><!-- content-->
 
     </div>
 	
@@ -205,12 +202,9 @@
 
                 <!-- REPORT POPUP -->
                <div data-role="popup" id="popup-report-cat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
-                   <div data-role="header" data-theme="a" class="ui-corner-top">
-                  
-                   </div>
+
                    <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
-                       <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
-                       <p>This action cannot be undone.</p>
+                       <img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png">
                        <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
                        <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                    </div>
@@ -245,7 +239,7 @@
                 <div><a href="#pestpage" data-transition="slide" ><img id="infoButt" src="css/images/AboutButton.png"></a></div>
                 <div><a href="#logout" class="FB-logout"><img id="logoutButt" src="css/images/logout.png"></a></div>
                 <h1>SnapPest</h1>
-                 <a href="#mainpage" data-transition="slide" data-direction="reverse"><div class="click"></div></a> 
+                <a href="#mainpage" data-transition="slide" data-direction="reverse"><div class="click"></div></a> 
         </div>
 
         <!-- Page content -->
@@ -257,12 +251,9 @@
 
             <!-- REPORT POPUP -->
             <div data-role="popup" id="popup-report-possum" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false"                style="max-width:400px;" class="ui-corner-all" data-transition="fade">
-                <div data-role="header" data-theme="a" class="ui-corner-top">
-                  
-                </div>
+                
                 <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
-                    <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
-                    <p>This action cannot be undone.</p>
+                    <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png">
                     <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
                     <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                 </div>
@@ -312,12 +303,9 @@
 
                <!-- REPORT POPUP -->
               <div data-role="popup" id="popup-report-rat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
-                  <div data-role="header" data-theme="a" class="ui-corner-top">
-                    
-                  </div>
+
                   <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
-                      <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
-                      <p>This action cannot be undone.</p>
+                      <img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png">
                       <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
                       <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                   </div>
@@ -365,12 +353,9 @@
 
                    <!-- REPORT POPUP -->
                   <div data-role="popup" id="popup-report-stoat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
-                      <div data-role="header" data-theme="a" class="ui-corner-top">
-                        
-                      </div>
+                      
                       <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
-                          <h3 class="ui-title"><img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png"></h3>
-                          <p>This action cannot be undone.</p>
+                          <img id="confirmReport" src="css/images/PopUpThatConfirmsReport.png">
                           <div id="cancel"><a href="#"  data-role="button" data-inline="true" data-rel="back">Cancel</a></div>
                           <div id="report"><button data-inline="true" data-rel="back" class="send-report"><b>Report</b></button></div>
                       </div>
@@ -389,7 +374,7 @@
 		  
 		  
          
-
+    <script type="text/javascript" src="js/buttons.js"></script>     
     <script type="text/javascript" src="js/init.js"></script>
 
 </body>
