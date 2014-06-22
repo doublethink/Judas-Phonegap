@@ -122,7 +122,7 @@
             </div><!--report popup-->
 
             <!-- Thank you Popup -->
-            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+            <div data-role="popup" class="photopopup" id='thanks-popup-main' data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                 <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
             </div>  
 
@@ -156,12 +156,13 @@
         <!-- Page content -->
         <div role="main" class="ui-content" data-role="content">
 
-          <div><img class="InfoPestPage" src="css/images/About.png"></div>
+          <div><img class="InfoPestPage" src="css/images/About.png">
 
           <a href="#possumpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-possum" src="css/images/Possum.jpg"></div></a>
           <a href="#catpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="cat" ><img class="pestPic report-cat" src="css/images/Cat.jpg"></div></a>
           <a href="#ratpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="ratt" ><img class="pestPic report-rat" src="css/images/Rat.jpg"></div></a>
           <a href="#stoatpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-rat" src="css/images/Stoat.jpg"></div></a>
+          </div>
         </div><!-- content-->
 
     </div>
@@ -211,7 +212,7 @@
                </div><!--report popup-->
 
              <!-- Thank you Popup -->
-             <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+             <div data-role="popup" class="photopopup" id='thanks-popup-cat' data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                  <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
              </div> 
 
@@ -260,7 +261,7 @@
             </div><!--report popup-->
 
             <!-- Thank you Popup -->
-            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+            <div data-role="popup" class="photopopup" id='thanks-popup-possum' data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                 <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
             </div>  
 
@@ -312,7 +313,7 @@
               </div><!--report popup-->
 
             <!-- Thank you Popup -->
-            <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+            <div data-role="popup" class="photopopup" id='thanks-popup-rat' data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                 <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
             </div> 
            
@@ -346,10 +347,14 @@
 
               <!-- Page content -->
               <div role="main" class="ui-content" data-role="content">
+                
+                  <div class="statistics-container">Stoats you have spotted: <div>...</div></div>
 
                   <a href="#popup-report-stoat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
 
                   <div ><img class="InfoPage" src="css/images/StoatInfoPage.jpg"></div>
+
+
 
                    <!-- REPORT POPUP -->
                   <div data-role="popup" id="popup-report-stoat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
@@ -362,7 +367,7 @@
                   </div><!--report popup-->
 
                 <!-- Thank you Popup -->
-                <div data-role="popup" class="photopopup thanks-popup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+                <div data-role="popup" class="photopopup" id='thanks-popup-stoat' data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
                     <img src="img/ReportThankYou_CIRCLE.png" alt="Photo portrait">
                 </div> 
 

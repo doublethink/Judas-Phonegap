@@ -210,3 +210,9 @@ padding-top: 150px;
 	 top:55%;
 	 left:65%;
  }
+
+ .statistics-container {
+ 		position: absolute;
+    left: 10px;
+    bottom: 20px;
+ }

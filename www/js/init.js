@@ -26,10 +26,14 @@ var onSuccess = function(location) {
 
 function ajaxSuccess(data, textStatus, jqHXR){
       $.mobile.loading("hide");
-      $( "#thanks-popup" ).popup( "open", {transition: 'fade'});
-      setTimeout(function () {
-        $("#thanks-popup").popup('close', {transition: 'fade'});
-       }, 2000);  
+      switch (window.sessionStorage.currentPage) {
+        case 'main':
+          $( "#thanks-popup-main" ).popup( "open", {transition: 'fade'});
+          setTimeout(function () {
+            $("#thanks-popup-main").popup('close', {transition: 'fade'});
+           }, 2000);
+        break;
+      }
 };
 
 // onError Callback receives a PositionError object
