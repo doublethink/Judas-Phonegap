@@ -26,13 +26,38 @@ var onSuccess = function(location) {
 
 function ajaxSuccess(data, textStatus, jqHXR){
       $.mobile.loading("hide");
+      var timeoutVal = 2000;
       switch (window.sessionStorage.currentPage) {
         case 'main':
           $( "#thanks-popup-main" ).popup( "open", {transition: 'fade'});
           setTimeout(function () {
             $("#thanks-popup-main").popup('close', {transition: 'fade'});
-           }, 2000);
-        break;
+           }, timeoutVal);
+          break;
+        case 'cat':
+          $( "#thanks-popup-cat" ).popup( "open", {transition: 'fade'});
+          setTimeout(function () {
+          $("#thanks-popup-cat").popup('close', {transition: 'fade'});
+          }, timeoutVal);
+          break;
+        case 'possum':
+          $( "#thanks-popup-possum" ).popup( "open", {transition: 'fade'});
+          setTimeout(function () {
+            $("#thanks-popup-possum").popup('close', {transition: 'fade'});
+           }, timeoutVal);
+          break;
+        case 'stoat':
+          $( "#thanks-popup-stoat" ).popup( "open", {transition: 'fade'});
+          setTimeout(function () {
+            $("#thanks-popup-stoat").popup('close', {transition: 'fade'});
+           }, timeoutVal);
+          break;
+        case 'rat':
+          $( "#thanks-popup-rat" ).popup( "open", {transition: 'fade'});
+          setTimeout(function () {
+            $("#thanks-popup-rat").popup('close', {transition: 'fade'});
+           }, timeoutVal);
+          break;
       }
 };
 
