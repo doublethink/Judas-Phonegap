@@ -16,18 +16,20 @@ var onSuccess = function(location) {
       "auth":
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }},
-    success: function(data, textStatus, jqHXR){
-      $.mobile.loading("hide");
-      $( ".thanks-popup" ).popup( "open", {transition: 'fade'});
-      setTimeout(function () {
-        $(".thanks-popup").popup('close', {transition: 'fade'});
-       }, 2000);  
-    },
+    success: ajaxSuccess,
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
       alert(JSON.stringify(jqXHR) + "error: " + errorThrown + "status: "+ textStatus);
     }
   });
+};
+
+function ajaxSuccess(data, textStatus, jqHXR){
+      $.mobile.loading("hide");
+      $( "#thanks-popup" ).popup( "open", {transition: 'fade'});
+      setTimeout(function () {
+        $("#thanks-popup").popup('close', {transition: 'fade'});
+       }, 2000);  
 };
 
 // onError Callback receives a PositionError object
@@ -45,6 +47,7 @@ function bindsendreport(){
     //Get the current page
     var currentPage = $.mobile.activePage.attr('id');
     currentPage = currentPage.substring(0, currentPage.indexOf("page"));
+    window.sessionStorage.currentPage = currentPage;
 
     if (window.sessionStorage.currentPest === undefined){
       alert("Please select a pest before reporting");
