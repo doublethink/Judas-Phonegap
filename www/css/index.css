@@ -32,15 +32,6 @@
 	width: 30px;
 	height: 30px;
 }
-.click{
-	z-index: 10;
-	position: fixed;
-	top: 1px;
-	left: 105px;
-	width: 100px;
-	height: 40px;
-	
-}
 
 #ratInfo{
 	top:10%;
