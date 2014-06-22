@@ -90,13 +90,15 @@ padding-top: 150px;
 	height: 40%;
 }
 
-#reportBut{
+.reportBut{
 	position: fixed;
 	z-index: 10;
 	top: 87%;
 	left: 83%;
 	height: 55px;
 	width: 55px;
+	background:url(images/reportBut.png) ;
+	background-size: 55px 55px;
 }
 .reportButStoat{
 	position: fixed;
@@ -203,7 +205,12 @@ padding-top: 150px;
  }
 
  .statistics-container {
- 		position: absolute;
-    left: 10px;
-    bottom: 20px;
+		position: fixed;
+		z-index: 10;
+		bottom: 5%;
+		left: 5%;
+ }
+
+ .statistics-div {
+ 		display: inline-block;
  }

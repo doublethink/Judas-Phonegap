@@ -154,12 +154,12 @@
         <!-- Page content -->
         <div role="main" class="ui-content" data-role="content">
 
-          <div><img class="InfoPestPage" src="css/images/About.png">
-
-          <a href="#possumpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-possum" src="css/images/Possum.jpg"></div></a>
-          <a href="#catpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="cat" ><img class="pestPic report-cat" src="css/images/Cat.jpg"></div></a>
-          <a href="#ratpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="ratt" ><img class="pestPic report-rat" src="css/images/Rat.jpg"></div></a>
-          <a href="#stoatpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-rat" src="css/images/Stoat.jpg"></div></a>
+          <img class="InfoPestPage" src="css/images/About.png">
+          <div>
+            <a href="#possumpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-possum" src="css/images/Possum.jpg"></div></a>
+            <a href="#catpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="cat" ><img class="pestPic report-cat" src="css/images/Cat.jpg"></div></a>
+            <a href="#ratpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="ratt" ><img class="pestPic report-rat" src="css/images/Rat.jpg"></div></a>
+            <a href="#stoatpage" data-rel="infoPage" data-transition="slide" data-direction="reverse"><div id="poss" ><img class="pestPic report-rat" src="css/images/Stoat.jpg"></div></a>
           </div>
         </div><!-- content-->
 
@@ -194,9 +194,13 @@
            <!-- Page content -->
            <div role="main" class="ui-content" data-role="content">
 
-               <a href="#popup-report-cat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
+               <a href="#popup-report-cat" data-rel="popup"><div class="reportBut"></div></a>
 
                <div ><img class="InfoPage" src="css/images/CatInfoPage.jpg"></div>
+
+              <div class="statistics-container">
+                <div class="statistics-div" >Number of cats you have spotted:&nbsp </div><div id="count-div-cat" class="statistics-div"> ...</div>
+              </div>
 
                 <!-- REPORT POPUP -->
                <div data-role="popup" id="popup-report-cat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
@@ -242,9 +246,13 @@
         <!-- Page content -->
         <div role="main" class="ui-content" data-role="content">
 
-            <a href="#popup-report-possum" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
+            <a href="#popup-report-possum" data-rel="popup"><div class="reportBut"></div></a>
 
             <div ><img class="InfoPage" src="css/images/PossumInfoPage.jpg"></div>
+
+            <div class="statistics-container">
+              <div class="statistics-div">Number of possums you have spotted:&nbsp </div><div id="count-div-possum" class="statistics-div"> ...</div>
+            </div>
 
             <!-- REPORT POPUP -->
             <div data-role="popup" id="popup-report-possum" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false"                style="max-width:400px;" class="ui-corner-all" data-transition="fade">
@@ -293,9 +301,13 @@
            <!-- Page content -->
            <div role="main" class="ui-content" data-role="content">
 
-               <a href="#popup-report-rat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
+               <a href="#popup-report-rat" data-rel="popup"><div class="reportBut"></div></a>
 
                <div ><img class="InfoPage" src="css/images/RatInfoPage.jpg"></div>
+
+               <div class="statistics-container">
+                    <div class="statistics-div">Number of rats you have spotted:&nbsp </div><div id="count-div-rat" class="statistics-div"> ...</div>
+                </div>
 
                <!-- REPORT POPUP -->
               <div data-role="popup" id="popup-report-rat" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false" style="max-width:400px;" class="ui-corner-all" data-transition="fade">
@@ -342,9 +354,11 @@
               <!-- Page content -->
               <div role="main" class="ui-content" data-role="content">
                 
-                  <div class="statistics-container">Stoats you have spotted: <div>...</div></div>
+                  <div class="statistics-container">
+                    <div class="statistics-div">Number of stoats you have spotted:&nbsp </div><div id="count-div-stoat" class="statistics-div"> ...</div>
+                  </div>
 
-                  <a href="#popup-report-stoat" data-rel="popup"><div><img id="reportBut" src="css/images/reportBut.png"></div></a>
+                  <a href="#popup-report-stoat" data-rel="popup"><div class="reportBut"></div></a>
 
                   <div ><img class="InfoPage" src="css/images/StoatInfoPage.jpg"></div>
 
