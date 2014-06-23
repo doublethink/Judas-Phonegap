@@ -231,10 +231,10 @@ $(document).ready(function(){
 $(document).on("pageshow","#catpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
-    alert(jsonUrl);
     $.get(jsonUrl, function(data) {
-      alert(data.count);
-      $("#count-div-cat").html("<div class='statistics-div'>" + data.count + "</div>");
-      }, 'json');
-  } else {alert("userID undefined");}//REMOVE
+      //if (data.count != undefined){
+        $("#count-div-cat").text(data.count);
+        }, 'json');
+      //}
+  }
 });
