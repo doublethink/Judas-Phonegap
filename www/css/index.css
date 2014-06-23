@@ -10,8 +10,18 @@
 	width:30px;
 }
 
-#pestpage{
+/*#pestpage{
 	background-color: black;
+}*/
+
+
+#LogInPageFacebookButton {
+	position: fixed;
+	top: 50%;
+	left:0%;
+	width: 105%;
+	height: 15%;
+	z-index: 50;
 }
 
 #logoutButt{
@@ -30,7 +40,7 @@
 	left: -25px;
 	width: 105%;
 	height: 235%;
-
+	z-index:0;
 }
 
 
