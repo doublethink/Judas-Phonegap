@@ -100,22 +100,30 @@ ABBR<!DOCTYPE html>
         <!-- Page content -->
         <div role="main" class="ui-content">
           		<div>
-          			<a href="#ratpage" data-rel="infoPage" data-transition="slide"><div id="ratInfo" class="infoButton"><img class="infoButton report-rat" src="css/images/InfoButton.png"></div></a>
-          			<a href="#possumpage" data-rel="infoPage" data-transition="slide"><div id="possumInfo" class="infoButton"><img class="infoButton report-possum" src="css/images/InfoButton.png"></div></a>
-          			<a href="#stoatpage" data-rel="infoPage" data-transition="slide"><div id="stoatInfo" class="infoButton"><img class="infoButton report-stoat" src="css/images/InfoButton.png"></div></a>
-          			<a href="#catpage" data-rel="infoPage" data-transition="slide"><div id="catInfo" class="infoButton"><img class="infoButton report-cat" src="css/images/InfoButton.png"></div></a>
+                
+                <a href="#popup-info-main" data-rel="popup" data-transition="slide"><div ><img id="howToInfo" src="css/images/InfoButton.png"></div></a>
 
-          		</div>
-			
+              </div>
+      
               <div>
-                <div class="main-image" id="rat" ></div>
-                <div class="main-image" id="possum" ></div>
-                <div class="main-image" id="stoat" ></div>
-                <div class="main-image" id="other" ></div>
+                <a href="#ratpage" data-rel="infoPage" data-transition="slide"><div class="main-image" id="rat" ></div></a>
+                <a href="#possumpage" data-rel="infoPage" data-transition="slide"><div class="main-image" id="possum" ></div></a>
+                <a href="#stoatpage" data-rel="infoPage" data-transition="slide"><div class="main-image" id="stoat" ></div></a>
+                <a href="#catpage" data-rel="infoPage" data-transition="slide"><div class="main-image" id="other" ></div></a>
                 <a href="#popup-report-main" data-rel="popup"><img class="reportButStoat report-stoat" src="css/images/reportBut.png"> </a>   
                 <a href="#popup-report-main" data-rel="popup"><img class="reportButCat report-cat" src="css/images/reportBut.png"> </a>
                 <a href="#popup-report-main" data-rel="popup"><img class="reportButPos report-possum" src="css/images/reportBut.png"> </a>
                 <a href="#popup-report-main" data-rel="popup"><img class="reportButRat report-rat" src="css/images/reportBut.png"> </a>
+            </div>
+
+             <!--InfoPopup-->
+            <div data-role="popup" id="popup-info-main" class="popupDialog" data-overlay-theme="none" data-theme="none" data-dismissible="false"   style="max-width:400px;"  data-transition="fade">
+                
+                <div data-role="content" data-theme="none" class="ui-corner-bottom ui-content">
+                    <img id="confirmReport" src="css/images/PopUpInfo.png">
+                    <div id="cancelInfo"><a href="#"  data-role="button" data-inline="true" data-rel="back">Close</a></div>
+                    
+                </div>
             </div>
 
 			<!-- REPORT POPUP -->

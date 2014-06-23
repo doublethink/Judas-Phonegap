@@ -53,23 +53,7 @@
 	height: 30px;
 }
 
-#ratInfo{
-	top:10%;
-	left:3%;
-	
-}
-#possumInfo{
-	top:10%;
-	left:52%;
-}
-#stoatInfo{
-	top:52%;
-	left:3%;
-}
-#catInfo{
-	top:52%;
-	left:52%;
-}
+
 
 .pestPic{
 	position: absolute;
@@ -92,6 +76,14 @@ padding-top: 150px;
 #stoatt{
 	padding-left: 150px;
 	padding-top: 150px;
+}
+#howToInfo{
+	position:fixed;
+	z-index:10;
+	height:40px;
+	width:40px;
+	top:45.6%;
+	left:43.6%;
 }
 
 .InfoPage{
@@ -124,7 +116,7 @@ padding-top: 150px;
 	position: fixed;
 	z-index: 10;
 	top: 87%;
-	left: 30%;
+	left: 15%;
 	height: 55px;
 	width: 55px;
 }
@@ -132,7 +124,7 @@ padding-top: 150px;
 	position: fixed;
 	z-index: 10;
 	top: 87%;
-	left: 80%;
+	left: 65%;
 	height: 55px;
 	width: 55px;
 }
@@ -140,7 +132,7 @@ padding-top: 150px;
 	position: fixed;
 	z-index: 10;
 	top: 37%;
-	left: 80%;
+	left: 65%;
 	height: 55px;
 	width: 55px;
 }
@@ -148,10 +140,15 @@ padding-top: 150px;
 	position: fixed;
 	z-index: 10;
 	top: 37%;
-	left: 30%;
+	left: 15%;
 	height: 55px;
 	width: 55px;
 }
+#cancelInfo{
+	 position:fixed;
+	 top:65%;
+	 left:-5%;
+	}
 
 #confirmReport{
 	position:fixed;
