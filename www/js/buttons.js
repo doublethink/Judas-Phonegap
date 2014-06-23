@@ -29,14 +29,19 @@ function bindlogout(){
   $(".FB-logout").on("click", function(){
     if (window.sessionStorage.loginstatus === "facebook") {
       FB.logout(function(response){
-        window.sessionStorage.loginstatus === "none"
-        $.mobile.changePage($("#login"));
+        logoutsuccess();
       });
     } else {
-      window.sessionStorage.loginstatus === "none";
-      $.mobile.changePage($("#login"));
+      logoutsuccess();
     }
   });
+};
+
+function logoutsuccess(){
+  window.sessionStorage.userID = undefined;
+  window.sessionStorage.accessToken = undefined;
+  window.sessionStorage.loginstatus === "none";
+  $.mobile.changePage($("#login"));
 };
 
 function bindmenupest(){

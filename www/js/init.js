@@ -232,9 +232,42 @@ $(document).on("pageshow","#catpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
     $.get(jsonUrl, function(data) {
-      //if (data.count != undefined){
-        $("#count-div-cat").text(data.count);
+      if (data.count != undefined){
+        $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
         }, 'json');
-      //}
+      }
+  }
+});
+
+$(document).on("pageshow","#possumpage",function(){
+  if (window.sessionStorage.userID != undefined){
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/possum";
+    $.get(jsonUrl, function(data) {
+      if (data.count != undefined){
+        $("#count-div-possum").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
+        }, 'json');
+      }
+  }
+});
+
+$(document).on("pageshow","#ratpage",function(){
+  if (window.sessionStorage.userID != undefined){
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/rat";
+    $.get(jsonUrl, function(data) {
+      if (data.count != undefined){
+        $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
+        }, 'json');
+      }
+  }
+});
+
+$(document).on("pageshow","#stoatpage",function(){
+  if (window.sessionStorage.userID != undefined){
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/stoat";
+    $.get(jsonUrl, function(data) {
+      if (data.count != undefined){
+        $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
+        }, 'json');
+      }
   }
 });
