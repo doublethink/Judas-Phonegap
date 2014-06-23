@@ -27,14 +27,13 @@ function bindloginmenu(){
 function bindlogout(){
   //Facebook logout button, redirects to #login screen
   $(".FB-logout").on("click", function(){
-    if(window.sessionStorage.loginstatus === "phone"){
-      window.sessionStorage.loginstatus === "none";
-      $.mobile.changePage($("#login"));
-    } else if (window.sessionStorage.loginstatus === "facebook") {
+    if (window.sessionStorage.loginstatus === "facebook") {
       FB.logout(function(response){
+        window.sessionStorage.loginstatus === "none"
         $.mobile.changePage($("#login"));
       });
     } else {
+      window.sessionStorage.loginstatus === "none";
       $.mobile.changePage($("#login"));
     }
   });
