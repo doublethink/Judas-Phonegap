@@ -155,6 +155,16 @@ function bindphonelogin() {
   userID*/
 };
 
+function getFacebookID(){
+  // UID not returned in login check so make api call for email
+  FB.api('/me?fields=email,id', function(response){
+    window.sessionStorage.userID = response.id;
+    if (response.id === undefined) {
+      alert("Could not retreive your ID");
+    }
+  });
+};
+
 function initbuttons(){
     $.ajaxSetup ({
       cache: false
@@ -197,6 +207,7 @@ document.addEventListener('deviceready', function() {
           FB.getLoginStatus(function(response){
             if (response.status === 'connected') {
               window.sessionStorage.loginstatus = "facebook";
+              getFacebookID();
               $.mobile.changePage($("#mainpage"));
             }
           });
@@ -218,10 +229,12 @@ $(document).ready(function(){
 });
 
 $(document).on("pageshow","#catpage",function(){
-  var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
-  alert(jsonUrl);
-  $.get(jsonUrl, function(data) {
-    alert(data.count);
-    $("#count-div-cat").html(data.count);
-    }, 'json');
+  if (window.sessionStorage.userID != undefined){
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
+    alert(jsonUrl);
+    $.get(jsonUrl, function(data) {
+      alert(data.count);
+      $("#count-div-cat").html("<div class='statistics-div'>" + data.count + "</div>");
+      }, 'json');
+  } else {alert("userID undefined");}//REMOVE
 });

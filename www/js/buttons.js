@@ -9,7 +9,7 @@ function bindlogin(){
     FB.login(function(response) {
         if (response.status === 'connected') {
             window.sessionStorage.loginstatus = "facebook";
-            window.localStorage.userID = response.authResponse.userID;
+            getFacebookID();
             $.mobile.changePage($("#mainpage"));
         } else {
             alert('Unable to login. Is your device connected?');
