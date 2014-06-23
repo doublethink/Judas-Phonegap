@@ -1,10 +1,14 @@
 //This script file is for inoccuous, unlikely to change functions
 
+//initialise the login-status before checks are done
+window.sessionStorage.loginstatus = "none";
+
 function bindlogin(){
   //Facebook login button, redirects to #mainpage if connected
   $(".FB-login").on("click", function(){
     FB.login(function(response) {
         if (response.status === 'connected') {
+            window.sessionStorage.loginstatus = "facebook";
             window.localStorage.userID = response.authResponse.userID;
             $.mobile.changePage($("#mainpage"));
         } else {

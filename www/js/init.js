@@ -132,6 +132,18 @@ function bindsendreport(){
   });
 };
 
+function bindphonelogin() {
+  $("#phone-login").on("click", function(){
+    window.sessionStorage.loginstatus = "phone";
+    window.sessionStorage.userID = device.name + device.uuid;
+    window.sessionStorage.accessToken = "#PHONE";
+    $.mobile.changePage($("#mainpage"));
+  });
+/*
+  accessToken
+  userID*/
+};
+
 function initbuttons(){
     $.ajaxSetup ({
       cache: false
@@ -145,6 +157,7 @@ function initbuttons(){
 	  bindsendreport();
     bindrecordcurrentpest();
     bindphotopopup();
+    bindphonelogin();
 };
 
   
@@ -169,6 +182,7 @@ document.addEventListener('deviceready', function() {
         // check if user is already signed in, if so forward to report screen
         FB.getLoginStatus(function(response){
           if (response.status === 'connected') {
+            window.sessionStorage.loginstatus = "facebook";
             $.mobile.changePage($("#mainpage"));
           }
         });
