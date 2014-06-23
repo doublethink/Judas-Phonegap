@@ -228,46 +228,51 @@ $(document).ready(function(){
     initbuttons();
 });
 
+//this will fire when user navigates to a detailed page, it replaces a div with the count of pests they've spotted
 $(document).on("pageshow","#catpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
     $.get(jsonUrl, function(data) {
       if (data.count != undefined){
         $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
-        }, 'json');
-      }
+        }
+      }, 'json');
+      
   }
 });
 
+//this will fire when user navigates to a detailed page, it replaces a div with the count of pests they've spotted
 $(document).on("pageshow","#possumpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/possum";
     $.get(jsonUrl, function(data) {
       if (data.count != undefined){
         $("#count-div-possum").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
-        }, 'json');
-      }
+        }
+      }, 'json');
   }
 });
 
+//this will fire when user navigates to a detailed page, it replaces a div with the count of pests they've spotted
 $(document).on("pageshow","#ratpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/rat";
     $.get(jsonUrl, function(data) {
       if (data.count != undefined){
         $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
-        }, 'json');
-      }
+        }
+      }, 'json');
   }
 });
 
+//this will fire when user navigates to a detailed page, it replaces a div with the count of pests they've spotted
 $(document).on("pageshow","#stoatpage",function(){
   if (window.sessionStorage.userID != undefined){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/stoat";
     $.get(jsonUrl, function(data) {
-      if (data.count != undefined){
+      //if (data.count != undefined){
         $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
-        }, 'json');
-      }
+       // }
+      }, 'json');
   }
 });
