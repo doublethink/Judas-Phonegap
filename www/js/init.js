@@ -67,6 +67,12 @@ function onError(error) {
   alert("GPS error\nPlease ensure that you have your location enabled under settings.");
 };
 
+function reportLoginFailure(){
+  alert("Report Failed\nYou are not logged in");
+  $.mobile.changePage($("#login"));
+  $.mobile.loading("hide");
+};
+
 // This script contains the more technical networking related functions
 
 function bindsendreport(){
@@ -89,27 +95,32 @@ function bindsendreport(){
         html: ""
       });
 
-      //Check user is logged into Facebook
-      FB.getLoginStatus(function(response){
-          if (response.status === 'connected') {
-            window.sessionStorage.accessToken = response.authResponse.accessToken;
+      if (window.sessionStorage.loginstatus === "facebook"){
+        //Check user is logged into Facebook
+        FB.getLoginStatus(function(response){
+            if (response.status === 'connected') {
+              window.sessionStorage.accessToken = response.authResponse.accessToken;
 
-            // UID not returned in login check so make api call for email
-            FB.api('/me?fields=email,id', function(response){
-              window.sessionStorage.userID = response.id;
-              if (response.id != undefined) {
-                navigator.geolocation.getCurrentPosition(onSuccess, onError);
-              } else {
-                alert("Could not retreive your ID");
-              }
-            });
+              // UID not returned in login check so make api call for email
+              FB.api('/me?fields=email,id', function(response){
+                window.sessionStorage.userID = response.id;
+                if (response.id != undefined) {
+                  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                } else {
+                  alert("Could not retreive your ID");
+                }
+              });
 
-          } else {
-              alert("Not logged in");
-              $.mobile.changePage($("#login"));
-              $.mobile.loading("hide");
-          }
-      });
+            } else {
+                reportLoginFailure();
+            }
+        });
+      } else if (window.sessionStorage.loginstatus === "phone"){
+        navigator.geolocation.getCurrentPosition(onSuccess, onError); 
+      } else {
+        reportLoginFailure();
+      }
+
     }
     switch (currentPage) {
       case 'main':
@@ -134,9 +145,9 @@ function bindsendreport(){
 
 function bindphonelogin() {
   $("#phone-login").on("click", function(){
-    window.sessionStorage.loginstatus = "phone";
     window.sessionStorage.userID = device.name + device.uuid;
     window.sessionStorage.accessToken = "#PHONE";
+    window.sessionStorage.loginstatus = "phone";
     $.mobile.changePage($("#mainpage"));
   });
 /*
@@ -179,13 +190,17 @@ document.addEventListener('deviceready', function() {
             useCachedDialogs: false
         });
 
-        // check if user is already signed in, if so forward to report screen
-        FB.getLoginStatus(function(response){
-          if (response.status === 'connected') {
-            window.sessionStorage.loginstatus = "facebook";
-            $.mobile.changePage($("#mainpage"));
-          }
-        });
+        if(window.sessionStorage.loginstatus === "phone"){
+          $.mobile.changePage($("#mainpage"));
+        } else {
+          // check if user is already signed in, if so forward to report screen
+          FB.getLoginStatus(function(response){
+            if (response.status === 'connected') {
+              window.sessionStorage.loginstatus = "facebook";
+              $.mobile.changePage($("#mainpage"));
+            }
+          });
+        }
 
     } catch (e) {
         alert(e);
