@@ -231,13 +231,12 @@ $(document).ready(function(){
 //this will fire when user navigates to a detailed page, it replaces a div with the count of pests they've spotted
 $(document).on("pageshow","#catpage",function(){
   if (window.sessionStorage.userID != undefined){
-    var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
+    var jsonUrl = "http://judas.herokuapp.com/pestspotted/Matt/cat";
     $.get(jsonUrl, function(data) {
       if (data.count != undefined){
         $("#count-div-cat").html("<div class='statistics-div'>" + data.count + "</div>");
         }
       }, 'json');
-      
   }
 });
 
