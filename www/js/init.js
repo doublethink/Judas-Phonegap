@@ -271,8 +271,9 @@ $(document).on("pageshow","#stoatpage",function(){
     var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/stoat";
     $.get(jsonUrl, function(data) {
       //if (data.count != undefined){
+        alert(data.count);
         $("#count-div-cat").replaceWith("<div class='statistics-div'>" + data.count + "</div>");
        // }
       }, 'json');
-  }
+  } else {alert("uid undefined");}
 });
