@@ -219,8 +219,9 @@ $(document).ready(function(){
 
 $(document).on("pageshow","#catpage",function(){
   var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
+  alert(jsonUrl);
   $.get(jsonUrl, function(data) {
     alert(data.count);
-      $("#count-div-cat").html("<p><b>"+data.count+"</b></p>")
+    $("#count-div-cat").html(data.count);
     }, 'json');
 });
