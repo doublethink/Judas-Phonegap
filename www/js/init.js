@@ -216,3 +216,10 @@ $(document).ready(function(){
 
     initbuttons();
 });
+
+$(document).on("pageshow","#catpage",function(){
+  var jsonUrl = "http://judas.herokuapp.com/pestspotted/" + window.sessionStorage.userID + "/cat";
+  $.get(jsonUrl, function(data) {
+      $("#count-div-cat").html("<p><b>"+data.count+"</b></p>")
+    }, 'json');
+});
