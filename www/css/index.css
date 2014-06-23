@@ -10,9 +10,9 @@
 	width:30px;
 }
 
-/*#pestpage{
+#pestpage{
 	background-color: black;
-}*/
+}
 
 
 #LogInPageFacebookButton {
@@ -23,6 +23,17 @@
 	height: 15%;
 	z-index: 50;
 }
+
+
+#SignInWithPhoneNumber {
+	position: fixed;
+	top: 70%;
+	left:0%;
+	width: 105%;
+	height: 15%;
+	z-index: 51;
+}
+
 
 #logoutButt{
 	position:fixed;
