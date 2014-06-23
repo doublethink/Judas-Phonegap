@@ -25,6 +25,17 @@
 
 }
 
+
+.LogInPageVisuals{
+	position: static;
+	top: -300px;
+	left: 0px;
+	width: 100%;
+	height: 40%;
+}
+
+
+
 #infoButt{
 	position:fixed;
 	top:1%;
