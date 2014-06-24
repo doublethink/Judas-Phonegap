@@ -5,17 +5,19 @@ var onSuccess = function(location) {
   var date = new Date();
   var currtime = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.toLocaleTimeString();
 
-  // Post packet to sever
-  $.ajax({
-    type: "POST",
-    url: jsonUrl,
-    data: {"packet":{
+  var packet = {"packet":{
       "position": {
         "longitude": location.coords.longitude, "latitude": location.coords.latitude, "accuracy": location.coords.accuracy,
         "datestamp": currtime}, "pest": window.sessionStorage.currentPest,
       "auth":
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
-      }},
+      }};
+
+  // Post packet to sever
+  $.ajax({
+    type: "POST",
+    url: jsonUrl,
+    data: packet,
     success: ajaxSuccess,
     error: function(jqXHR, textStatus, errorThrown){
       $.mobile.loading("hide");
