@@ -5,6 +5,7 @@ var onSuccess = function(location) {
   var date = new Date();
   var currtime = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.toLocaleTimeString();
 
+  //Compose packet (in the event offine is needed)
   var packet = {"packet":{
       "position": {
         "longitude": location.coords.longitude, "latitude": location.coords.latitude, "accuracy": location.coords.accuracy,
@@ -12,6 +13,8 @@ var onSuccess = function(location) {
       "auth":
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }};
+
+  navigator.network.isReachable('judas.herokuapp.com', reachableCallback);
 
   // Post packet to sever
   $.ajax({
@@ -24,6 +27,11 @@ var onSuccess = function(location) {
       alert(JSON.stringify(jqXHR) + "error: " + errorThrown + "status: "+ textStatus);
     }
   });
+};
+
+// Check of network connection
+function reachableCallack (reachability){
+  alert("judas.herokuapp.com is reachable");
 };
 
 function ajaxSuccess(data, textStatus, jqHXR){
