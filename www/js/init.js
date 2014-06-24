@@ -18,9 +18,8 @@ var onSuccess = function(location) {
     sendJSON(packet);
   } else {
     //not connected
-    alert(JSON.stringify(packet));
-    window.localStorage.packet = JSON.stringify(packet);
     alert("You are currently offine\nYour report will be sent when you are online");
+    window.localStorage.packet = JSON.stringify(packet);
     ajaxSuccess();
   }
 };
