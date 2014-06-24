@@ -18,10 +18,10 @@ var onSuccess = function(location) {
     sendJSON(packet);
   } else {
     //not connected
-    alert("not connected!");
+    window.localStorage.packet = JSON.stringify(packet);
+    alert("You are currently offine\nYour report will be sent when you are online");
+    ajaxSuccess();
   }
-
-  
 };
 
 // ajax posting method
@@ -308,10 +308,15 @@ $(document).on("pageshow","#stoatpage",function(){
 // Event timer to check for offline objects
 setInterval(
      function(){   
-          if (i == 1) {            
-               i = i+1
-               $("#div p").css("left", "-" + width * i + "px");  
-            }
+        // Check to see if connection is restored
+        if (checkConnection()){
+          if (window.localStorage.packet != undefined){
+            var stringPacket = window.localStorage.packet;
+            window.localStorage.packet = undefined;
+            var packet = JSON.parse(stringPacket);
+            sendJSON(packet);
+          }
+        }
      },
      30000  //every 30 seconds
 );
