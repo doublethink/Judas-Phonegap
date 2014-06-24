@@ -19,6 +19,7 @@ var onSuccess = function(location) {
   } else {
     //not connected
     alert("You are currently offine\nYour report will be sent when you are online");
+    $.mobile.loading("hide");
     window.localStorage.packet = JSON.stringify(packet);
     ajaxSuccess();
   }
