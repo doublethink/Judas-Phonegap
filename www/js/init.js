@@ -14,7 +14,11 @@ var onSuccess = function(location) {
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }};
 
-  navigator.network.isReachable('www.google.com', reachableCallback);
+  if (!checkConnection()){
+    alert("connected!");
+  } else {
+    alert("not connected!");
+  }
 
   // Post packet to sever
   $.ajax({
@@ -30,9 +34,17 @@ var onSuccess = function(location) {
 };
 
 // Check of network connection
-function reachableCallack (reachability){
-  alert("network connection");
-};
+function checkConnection()
+{
+     if( !navigator.network )
+     {
+         // set the parent windows navigator network object to the child window
+         navigator.network = window.top.navigator.network;
+     }
+    // return the type of connection found
+   return ( (navigator.network.connection.type === "none" || navigator.network.connection.type === null || 
+          navigator.network.connection.type === "unknown" ) ? false : true );
+}
 
 function ajaxSuccess(data, textStatus, jqHXR){
       $.mobile.loading("hide");
