@@ -1,7 +1,6 @@
 // GPS successfully occured function
 var onSuccess = function(location) {
   
-  var jsonUrl = "http://judas.herokuapp.com/pestspotted";
   var date = new Date();
   var currtime = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' + date.toLocaleTimeString();
 
@@ -14,13 +13,21 @@ var onSuccess = function(location) {
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }};
 
-  if (!checkConnection()){
-    alert("connected!");
+  if (checkConnection()){
+    //is connected
+    sendJSON(packet);
   } else {
+    //not connected
     alert("not connected!");
   }
 
+  
+};
+
+// ajax posting method
+function sendJSON(packet){
   // Post packet to sever
+  var jsonUrl = "http://judas.herokuapp.com/pestspotted";
   $.ajax({
     type: "POST",
     url: jsonUrl,
@@ -33,7 +40,7 @@ var onSuccess = function(location) {
   });
 };
 
-// Check of network connection
+// Returns true if connection detected
 function checkConnection()
 {
      if( !navigator.network )
@@ -297,3 +304,14 @@ $(document).on("pageshow","#stoatpage",function(){
       }, 'json');
   }
 });
+
+// Event timer to check for offline objects
+setInterval(
+     function(){   
+          if (i == 1) {            
+               i = i+1
+               $("#div p").css("left", "-" + width * i + "px");  
+            }
+     },
+     30000  //every 30 seconds
+);
