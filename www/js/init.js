@@ -14,7 +14,7 @@ var onSuccess = function(location) {
       {"uid": window.sessionStorage.userID, "accessToken": window.sessionStorage.accessToken}
       }};
 
-  navigator.network.isReachable('judas.herokuapp.com', reachableCallback);
+  navigator.network.isReachable('www.google.com', reachableCallback);
 
   // Post packet to sever
   $.ajax({
@@ -31,7 +31,7 @@ var onSuccess = function(location) {
 
 // Check of network connection
 function reachableCallack (reachability){
-  alert("judas.herokuapp.com is reachable");
+  alert("network connection");
 };
 
 function ajaxSuccess(data, textStatus, jqHXR){
